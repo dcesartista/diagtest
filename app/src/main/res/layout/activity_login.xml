@@ -27,13 +27,13 @@
         android:layout_height="50dp">
 
         <ImageView
-            android:id="@+id/ico_username"
+            android:id="@+id/ico_nisn"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@color/colorAccent"/>
         <EditText
-            android:id="@+id/username_box"
-            android:layout_toRightOf="@id/ico_username"
+            android:id="@+id/nisn_box"
+            android:layout_toRightOf="@id/ico_nisn"
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:background="@android:color/white"/>
