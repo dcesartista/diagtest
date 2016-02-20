@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:card_view="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:id="@+id/linLay1"
     >
     <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +17,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/linLay2">
             <TextView
                 android:id="@+id/tvSoals"
                 android:layout_width="match_parent"
@@ -25,10 +28,32 @@
                 android:padding="20dp"
                 />
 
-            <ListView
-                android:id="@+id/listOpsi"
+            <RadioGroup
+                android:id="@+id/rgOptions"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/rbOpsiA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opsi Ahaha"/>
+                <RadioButton
+                    android:id="@+id/rbOpsiB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opsi Bahaha"/>
+                <RadioButton
+                    android:id="@+id/rbOpsiC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opsi Cahaha"/>
+                <RadioButton
+                    android:id="@+id/rbOpsiD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opsi Dahaha"/>
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/tvAlasan"
@@ -38,14 +63,36 @@
                 android:text="asdasdasdas"
                 android:textSize="30sp"/>
 
-            <ListView
-                android:id="@+id/listAlasan"
+            <RadioGroup
+                android:id="@+id/rgReasons"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/rbReasonA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opsi Ahaha"/>
+                <RadioButton
+                    android:id="@+id/rbReasonB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opsi Bahaha"/>
+                <RadioButton
+                    android:id="@+id/rbReasonC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opsi Cahaha"/>
+                <RadioButton
+                    android:id="@+id/rbReasonD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opsi Dahaha"/>
+            </RadioGroup>
 
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
 
-</FrameLayout>
+</LinearLayout>

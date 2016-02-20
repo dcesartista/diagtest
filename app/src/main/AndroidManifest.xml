@@ -15,7 +15,9 @@
         </activity>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegisterActivity"/>
-        <activity android:name=".UjianActivity">
+        <activity android:name=".UjianActivity"
+            android:theme="@style/AppTheme"
+            android:label="@string/ujian_label">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

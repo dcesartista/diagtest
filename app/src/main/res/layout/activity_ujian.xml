@@ -6,11 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.p_code.diagnostictest.UjianActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <!--android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewUjian"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        />
+        /-->
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
 
 </RelativeLayout>
