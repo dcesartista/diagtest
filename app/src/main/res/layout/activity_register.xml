@@ -128,10 +128,16 @@
 
     <Button
         android:id="@+id/signup_btn"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:text="sign up"/>
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
 
 </LinearLayout>

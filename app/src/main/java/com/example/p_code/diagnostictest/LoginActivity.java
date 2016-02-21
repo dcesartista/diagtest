@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void signUp() {
+        finish();
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
@@ -81,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void onProgress(boolean isLoading) {
-        if(isLoading) {
+        if(isLoading == true) {
             mProgress.setVisibility(ProgressBar.VISIBLE);
         } else {
             mProgress.setVisibility(ProgressBar.GONE);
@@ -89,6 +90,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void switchToApplication() {
+        finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -109,5 +111,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onFailed(VolleyError errorListener) {
         onProgress(false);
         Toast.makeText(this, "Error : " + errorListener, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
