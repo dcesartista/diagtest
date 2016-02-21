@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Diagnostic Test</string>
+    <string name="ujian_label">Ujian</string>
 </resources>
