@@ -9,8 +9,14 @@ public class Data extends Application {
     public static String nisn;
     public static String nama;
 
+    public static String notification;
+
     public void setData(String nisn, String nama) {
         this.nisn = nisn;
         this.nama = nama;
+    }
+
+    public void setNotif(String notification) {
+        this.notification = notification;
     }
 }

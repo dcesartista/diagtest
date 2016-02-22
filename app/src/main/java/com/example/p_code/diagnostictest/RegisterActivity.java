@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.example.p_code.diagnostictest.Interface.VolleyInterface;
 import com.example.p_code.diagnostictest.Template.EndPointAPI;
 import com.example.p_code.diagnostictest.Template.Template;
+import com.example.p_code.diagnostictest.Utils.Data;
 import com.example.p_code.diagnostictest.Utils.JSONParser;
 import com.example.p_code.diagnostictest.Utils.VolleyRequest;
 
@@ -63,16 +64,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private void signUp() {
         checkForm();
-
-        if (password == confirm) {
-            Map<String,String> map = new HashMap<>();
-            map.put(Template.Query.TAG, Template.Query.SIGNUP);
-            map.put(Template.Query.NISN, nisn);
-            map.put(Template.Query.PASSWORD, password);
-            mRequest.sendPostRequest(EndPointAPI.DIAGTEST, map);
-        } else {
-            Toast.makeText(this, "Passwrod doesn't match", Toast.LENGTH_LONG);
-        }
+        Map<String,String> map = new HashMap<>();
+        map.put(Template.Query.TAG, Template.Query.SIGNUP);
+        map.put(Template.Query.NISN, nisn);
+        map.put(Template.Query.NAMA, name);
+        map.put(Template.Query.PASSWORD, password);
+        mRequest.sendPostRequest(EndPointAPI.DIAGTEST, map);
     }
 
     @Override
@@ -80,7 +77,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.signup_btn:
                 signUp();
-                switchToApplication();
         }
     }
 
@@ -106,6 +102,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onSucces(JSONObject jsonObject) {
         onProgress(false);
+        mJSONParser.isSuccess(jsonObject);
+        Toast.makeText(this, Data.notification, Toast.LENGTH_LONG).show();
+        if (Data.notification.equals("Sign Up Successful")) {
+            switchToApplication();
+        }
+
     }
 
     @Override

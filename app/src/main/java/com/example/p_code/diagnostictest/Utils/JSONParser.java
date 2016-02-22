@@ -16,8 +16,8 @@ import java.lang.reflect.Array;
  */
 public class JSONParser {
     private Context mContext;
-    Data mainData = new Data();
-    String finalNisn, finalNama;
+    //Data mainData = new Data();
+    String finalNisn, finalNama, response, finalNotif;
     JSONArray array;
 
     public JSONParser(Context context) {
@@ -25,12 +25,16 @@ public class JSONParser {
     }
 
     public boolean isSuccess(JSONObject jsonObject) {
+        String mResponse;
 
         try
         {
-
-            array = jsonObject.getJSONArray("login");
-            if (array != null) {
+            response = jsonObject.getString("response");
+            mResponse = response.toString();
+            //array = jsonObject.getJSONArray("login");
+            if (mResponse.equals("login")) {
+                array = jsonObject.getJSONArray("login");
+                //Toast.makeText(mContext, mResponse, Toast.LENGTH_SHORT).show();
                 String nisn = "";
                 String nama = "";
 
@@ -41,22 +45,21 @@ public class JSONParser {
 
                 finalNisn = nisn.toString();
                 finalNama = nama.toString();
-                mainData.setData(finalNisn, finalNama);
+                //mainData.setData(finalNisn, finalNama);
+                Data.nama = finalNama;
+                Data.nisn = finalNisn;
+                //Toast.makeText(mContext, finalNisn + finalNama, Toast.LENGTH_LONG).show();
 
-            } else {
-                try {
-                    array = jsonObject.getJSONArray("signUp");
-                    if (array != null) {
-                        String notif;
-                        JSONObject b = array.getJSONObject(0);
+            } else if (mResponse.equals("signup")) {
+                array = jsonObject.getJSONArray("signup");
+                String notification = "";
 
-                        notif = b.getString("notif");
+                JSONObject b = array.getJSONObject(0);
 
-                        Toast.makeText(mContext, notif, Toast.LENGTH_LONG).show();
-                    }
-                } catch (JSONException e) {
-                    Toast.makeText(mContext, "" + e, Toast.LENGTH_SHORT).show();
-                }
+                notification = b.getString("notif");
+                finalNotif = notification.toString();
+
+                Data.notification = finalNotif;
             }
 
             //Toast.makeText(mContext, nisn.toString(), Toast.LENGTH_SHORT).show();
