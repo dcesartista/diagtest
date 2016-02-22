@@ -69,18 +69,17 @@ public class SoalAdapterNew extends BaseAdapter {
     public View getView(final int soalPosition, View convertView, ViewGroup parent) {
 
         View view = inflater.inflate(R.layout.soal_ujian, parent, false);
+        //UjianActivity2.getOverview().getItem(soalPosition).setChecked(true);
 
         soalHolder = new SoalHolder(view, context);
         //Log.v("Soal No", String.valueOf(soalPosition));
 
         if(answers[soalPosition] > 0){
-            soalHolder.options.check(soalHolder.options.getChildAt(answers[soalPosition]-1).getId());
-            Log.v("jawaban :", String.valueOf(answers[soalPosition]));
+            soalHolder.options.check(soalHolder.options.getChildAt(answers[soalPosition] - 1).getId());
         }
 
         if(reasons[soalPosition] > 0){
             soalHolder.reasons.check(soalHolder.reasons.getChildAt(reasons[soalPosition] - 1).getId());
-            Log.v("alasan :", String.valueOf(reasons[soalPosition]));
         }
 
         for (int i =0;i<4;i++){
@@ -91,33 +90,33 @@ public class SoalAdapterNew extends BaseAdapter {
         }
 
         soalHolder.soal.setText(mSoal.get(soalPosition).getSoal());
-        Log.v("Jumlah Opsi : ", String.valueOf(soalHolder.options.getChildCount()));
         soalHolder.alasan.setText(mSoal.get(soalPosition).getAlasan());
 
         soalHolder.options.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                answers[soalPosition] = checkedId - 2131492971;
-                for (int a = 0; a < 5; a++) {
-                    Log.v("Jawaban :", String.valueOf(answers[a]));
-                }
+                answers[soalPosition] = checkedId - 2131492978 - 36;
+                UjianActivity2.updateOverview(answers, reasons);
             }
         });
 
         soalHolder.reasons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                reasons[soalPosition] = checkedId-2131492977;
-                for(int a = 0; a<5; a++){
-                    Log.v("Alasan :", String.valueOf(reasons[a]));
-                }
+                reasons[soalPosition] = checkedId - 2131492984 - 36;
+                UjianActivity2.updateOverview(answers, reasons);
             }
         });
 
 
         Log.v(TAG, "executed");
+        Log.v("Soal ke:", String.valueOf(soalPosition));
 
         return view;
+    }
+
+    public int[] getAnswers(){
+        return answers;
     }
 
 }

@@ -14,16 +14,19 @@
         android:theme="@style/AppTheme.NoActionBar"
         >
         <activity android:name=".MainActivity">
-
         </activity>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegisterActivity"/>
-        <activity android:name=".UjianActivity"
-            android:theme="@style/AppTheme"
-            android:label="@string/ujian_label"/>
         <activity android:name=".SplashScreen">
+        </activity>
+        <activity
+            android:name=".UjianActivity2"
+            android:label="@string/title_activity_ujian2"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
