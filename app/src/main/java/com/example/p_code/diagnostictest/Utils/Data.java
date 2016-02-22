@@ -13,6 +13,4 @@ public class Data extends Application {
         this.nisn = nisn;
         this.nama = nama;
     }
-
-
 }

@@ -18,36 +18,52 @@ public class JSONParser {
     private Context mContext;
     Data mainData = new Data();
     String finalNisn, finalNama;
+    JSONArray array;
 
     public JSONParser(Context context) {
         this.mContext = context;
     }
 
     public boolean isSuccess(JSONObject jsonObject) {
-        String nisn = "";
-        String nama = "";
-
-        JSONArray array;
 
         try
         {
-            array = jsonObject.getJSONArray("response");
-            JSONObject a = array.getJSONObject(0);
-            nisn = a.getString("nisn");
-            nama = a.getString("nama");
 
-            finalNisn = nisn.toString();
-            finalNama = nama.toString();
+            array = jsonObject.getJSONArray("login");
+            if (array != null) {
+                String nisn = "";
+                String nama = "";
+
+                JSONObject a = array.getJSONObject(0);
+
+                nisn = a.getString("nisn");
+                nama = a.getString("nama");
+
+                finalNisn = nisn.toString();
+                finalNama = nama.toString();
+                mainData.setData(finalNisn, finalNama);
+
+            } else {
+                try {
+                    array = jsonObject.getJSONArray("signUp");
+                    if (array != null) {
+                        String notif;
+                        JSONObject b = array.getJSONObject(0);
+
+                        notif = b.getString("notif");
+
+                        Toast.makeText(mContext, notif, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(mContext, "" + e, Toast.LENGTH_SHORT).show();
+                }
+            }
+
             //Toast.makeText(mContext, nisn.toString(), Toast.LENGTH_SHORT).show();
         } catch (JSONException e) {
             Toast.makeText(mContext, "" + e, Toast.LENGTH_SHORT).show();
         }
 
-        mainData.setData(finalNisn, finalNama);
-        if (nisn != "") {
-            Toast.makeText(mContext, "Login Successfully", Toast.LENGTH_LONG).show();
-            return true;
-        } else
-            return false;
+        return true;
     }
 }

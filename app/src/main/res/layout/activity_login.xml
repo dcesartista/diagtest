@@ -17,7 +17,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
-        android:background="@color/colorPrimaryDark">
+        android:background="@drawable/ic_unnes_notext">
     </RelativeLayout>
 
     <RelativeLayout
@@ -30,13 +30,20 @@
             android:id="@+id/ico_nisn"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent"/>
+            android:src="@drawable/ic_credit_card_white"
+            />
         <EditText
             android:id="@+id/nisn_box"
             android:layout_toRightOf="@id/ico_nisn"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"/>
+            android:layout_width="190dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="40dp"
+            android:background="@android:color/white"
+            android:inputType="numberSigned"
+            android:layout_centerVertical="true"
+            android:hint="NISN"
+            android:padding="10dp"
+            android:textSize="15sp"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -49,20 +56,26 @@
             android:id="@+id/ico_password"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent"/>
+            android:src="@drawable/ic_lock_white"/>
         <EditText
             android:id="@+id/password_box"
             android:layout_toRightOf="@id/ico_password"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"/>
+            android:layout_marginLeft="10dp"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:background="@android:color/white"
+            android:inputType="textPassword"
+            android:layout_centerVertical="true"
+            android:hint="Password"
+            android:textSize="15sp"
+            android:padding="10dp"/>
     </RelativeLayout>
 
     <Button
         android:id="@+id/login_btn"
         android:layout_marginBottom="15dp"
         android:layout_gravity="center_horizontal"
-        android:layout_width="150dp"
+        android:layout_width="140dp"
         android:layout_height="50dp"
         android:text="login"/>
 
@@ -74,11 +87,20 @@
         android:textSize="18sp"/>
 
     <Button
+        android:id="@+id/signup_btn"
         android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="175dp"
         android:layout_height="30dp"
         android:background="@android:color/transparent"
         android:text="Tap here to Sign Up"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"/>
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="25dp"
+        android:layout_height="25dp" />
 
 </LinearLayout>

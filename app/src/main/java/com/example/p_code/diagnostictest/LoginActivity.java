@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -13,7 +14,6 @@ import com.example.p_code.diagnostictest.Interface.VolleyInterface;
 import com.example.p_code.diagnostictest.Template.EndPointAPI;
 import com.example.p_code.diagnostictest.Template.Template;
 import com.example.p_code.diagnostictest.Utils.JSONParser;
-import com.example.p_code.diagnostictest.Utils.MainApplication;
 import com.example.p_code.diagnostictest.Utils.VolleyRequest;
 
 import org.json.JSONObject;
@@ -25,7 +25,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     EditText mNisn;
     EditText mPassword;
-    Button loginBtn;
+    Button loginBtn, signupBtn;
+    ProgressBar mProgress;
 
     public VolleyRequest mRequest;
     public JSONParser mJSONParser;
@@ -46,8 +47,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mNisn = (EditText) findViewById(R.id.nisn_box);
         mPassword = (EditText) findViewById(R.id.password_box);
         loginBtn = (Button) findViewById(R.id.login_btn);
+        signupBtn = (Button) findViewById(R.id.signup_btn);
+        mProgress = (ProgressBar) findViewById(R.id.login_progress);
 
         loginBtn.setOnClickListener(this);
+        signupBtn.setOnClickListener(this);
     }
 
     @Override
@@ -56,7 +60,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.login_btn:
                 putData();
                 break;
+
+            case R.id.signup_btn:
+                signUp();
+                break;
         }
+    }
+
+    private void signUp() {
+        finish();
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     private void putData() {
@@ -65,22 +79,42 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         map.put(Template.Query.NISN, mNisn.getText().toString());
         map.put(Template.Query.PASSWORD, mPassword.getText().toString());
         mRequest.sendPostRequest(EndPointAPI.DIAGTEST, map);
+    }
+
+    private void onProgress(boolean isLoading) {
+        if(isLoading == true) {
+            mProgress.setVisibility(ProgressBar.VISIBLE);
+        } else {
+            mProgress.setVisibility(ProgressBar.GONE);
+        }
+    }
+
+    private void switchToApplication() {
+        finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void onPrepare() {
-
+        onProgress(false);
     }
 
     @Override
     public void onSucces(JSONObject jsonObject) {
+        onProgress(false);
         mJSONParser.isSuccess(jsonObject);
+        switchToApplication();
     }
 
     @Override
     public void onFailed(VolleyError errorListener) {
+        onProgress(false);
         Toast.makeText(this, "Error : " + errorListener, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
