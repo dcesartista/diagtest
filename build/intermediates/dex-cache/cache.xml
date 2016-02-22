@@ -5,15 +5,8 @@
         jar="D:\ANDROID\DiagnosticTest\app\build\intermediates\transforms\instantRunSlicer\debug\jars\1\1a\dependencies.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="fff1f891b22d1996c4d710dfe3fabd574ad79cc9">
+        sha1="86136edf8be9c3aa1b7d8a9bc934c26044cba586">
         <dex dex="D:\ANDROID\DiagnosticTest\app\build\intermediates\transforms\dex\debug\folders\1000\1a\dependencies_f5dae75b9f074a2d0ee97d0eaa332fdc58ca51d2\classes.dex" />
-    </item>
-    <item
-        jar="D:\ANDROID\DiagnosticTest\app\build\intermediates\transforms\instantRunSlicer\debug\jars\1\5\main_slice.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="a02799966f818ecba55e2f37d1b8f4e9d3504bff">
-        <dex dex="D:\ANDROID\DiagnosticTest\app\build\intermediates\transforms\dex\debug\folders\1000\5\main_slice_c01eba5b4e99015801f74f26a094ccaa95db7587\classes.dex" />
     </item>
 
 </items>
