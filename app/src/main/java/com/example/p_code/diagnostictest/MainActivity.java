@@ -1,6 +1,5 @@
 package com.example.p_code.diagnostictest;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,19 +20,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initObject();
+        //initObject();
     }
 
-    private void initObject() {
+    /*private void initObject() {
         namaT = (TextView) findViewById(R.id.nama_text);
         soalBtn = (Button) findViewById(R.id.soal_btn);
 
         res_nama = accountData.nama;
 
         soalBtn.setOnClickListener(this);
-//
+
         showResult();
-    }
+    }*/
 
     private void showResult() {
         //Toast.makeText(this, res_nisn, Toast.LENGTH_SHORT);
@@ -42,10 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        /*switch (v.getId()) {
             case R.id.soal_btn:
                 Intent intent = new Intent(this, UjianActivity2.class);
                 startActivity(intent);
-        }
+        }*/
     }
 }

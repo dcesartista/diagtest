@@ -1,12 +1,14 @@
 package com.example.p_code.diagnostictest;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -25,7 +27,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     EditText mNisn;
     EditText mPassword;
-    Button loginBtn, signupBtn;
+    Button loginBtn;
+    TextView signupBtn;
     ProgressBar mProgress;
 
     public VolleyRequest mRequest;
@@ -39,6 +42,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mJSONParser = new JSONParser(this);
         mRequest = new VolleyRequest(this);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.black));
+        }
+
         initObject();
 
     }
@@ -47,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mNisn = (EditText) findViewById(R.id.nisn_box);
         mPassword = (EditText) findViewById(R.id.password_box);
         loginBtn = (Button) findViewById(R.id.login_btn);
-        signupBtn = (Button) findViewById(R.id.signup_btn);
+        signupBtn = (TextView) findViewById(R.id.signup_btn);
         mProgress = (ProgressBar) findViewById(R.id.login_progress);
 
         loginBtn.setOnClickListener(this);
