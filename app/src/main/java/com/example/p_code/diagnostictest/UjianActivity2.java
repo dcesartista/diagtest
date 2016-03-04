@@ -10,8 +10,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -21,6 +23,9 @@ public class UjianActivity2 extends AppCompatActivity
     private ListView mListView;
     private SoalAdapterNew mAdapter;
     private static Menu overview;
+    private int[] answerKey;
+    private int[] reasonKey;
+    private float score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,9 @@ public class UjianActivity2 extends AppCompatActivity
         setContentView(R.layout.activity_ujian2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        answerKey = new int[]{1,2,1,2,3,3,4,2,3,4,2,1,1,4,4,3,2,4,4,3};
+        reasonKey = new int[]{1,2,1,2,3,3,4,2,3,4,2,1,1,4,4,3,2,4,4,3};
+        score = 0;
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +49,6 @@ public class UjianActivity2 extends AppCompatActivity
         mListView = (ListView) findViewById(R.id.listView);
         mAdapter = new SoalAdapterNew(this,getDataSet());
         mListView.setAdapter(mAdapter);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,6 +69,23 @@ public class UjianActivity2 extends AppCompatActivity
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 overview.getItem(firstVisibleItem).setChecked(true);
+            }
+        });
+
+        TextView submitButton = (TextView) findViewById(R.id.tvSubmit);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(int i=0; i<20; i++){
+                    if(changeAnswerIdtoLetter(SoalAdapterNew.getAnswers()[i]).equals(changeAnswerIdtoLetter(answerKey[i]))){
+                        score += 2.5;
+                    }
+                    if(changeReasonIdtoLetter(SoalAdapterNew.getReasons()[i]).equals(changeReasonIdtoLetter(reasonKey[i]))){
+                        score += 2.5;
+                    }
+                }
+                Log.v("Score ", String.valueOf(score));
+                score=0;
             }
         });
     }

@@ -21,8 +21,8 @@ public class SoalAdapterNew extends BaseAdapter {
     private Context context;
     private static LayoutInflater inflater = null;
     SoalHolder soalHolder;
-    int answers[] = new int[100];
-    int reasons[] = new int[100];
+    static int answers[] = new int[100];
+    static int reasons[] = new int[100];
 
     public SoalAdapterNew(Context context, ArrayList<Soal> mSoal) {
         this.context = context;
@@ -95,7 +95,7 @@ public class SoalAdapterNew extends BaseAdapter {
         soalHolder.options.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                answers[soalPosition] = checkedId - 2131492978 - 36;
+                answers[soalPosition] = checkedId - 2131492978 - 38;
                 UjianActivity2.updateOverview(answers, reasons);
             }
         });
@@ -103,7 +103,7 @@ public class SoalAdapterNew extends BaseAdapter {
         soalHolder.reasons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                reasons[soalPosition] = checkedId - 2131492984 - 36;
+                reasons[soalPosition] = checkedId - 2131492984 - 38;
                 UjianActivity2.updateOverview(answers, reasons);
             }
         });
@@ -115,8 +115,11 @@ public class SoalAdapterNew extends BaseAdapter {
         return view;
     }
 
-    public int[] getAnswers(){
+    public static int[] getAnswers(){
         return answers;
+    }
+    public static int[] getReasons(){
+        return reasons;
     }
 
 }
