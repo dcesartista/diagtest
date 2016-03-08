@@ -1,7 +1,10 @@
 package com.example.p_code.diagnostictest;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,11 +17,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String res_nama;
     Button soalBtn;
     Data accountData;
+    CardView materi,ujian,history;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.black));
+        }
+
+        materi = (CardView) findViewById(R.id.cardMateri);
+        ujian = (CardView) findViewById(R.id.cardUjian);
+        history = (CardView) findViewById(R.id.cardHistory);
+
+        materi.setOnClickListener(this);
+        ujian.setOnClickListener(this);
+        history.setOnClickListener(this);
 
         //initObject();
     }
@@ -41,10 +57,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        /*switch (v.getId()) {
-            case R.id.soal_btn:
+        switch (v.getId()) {
+            /*case R.id.soal_btn:
+                Intent intent = new Intent(this, UjianActivity2.class);
+                startActivity(intent);*/
+            case R.id.cardUjian:
                 Intent intent = new Intent(this, UjianActivity2.class);
                 startActivity(intent);
-        }*/
+                break;
+        }
     }
 }

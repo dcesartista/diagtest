@@ -5,7 +5,7 @@ package com.example.p_code.diagnostictest.Template;
  */
 public interface Template {
     interface VolleyRetryPolicy {
-        int SOCKET_TIMEOUT = 3000;
+        int SOCKET_TIMEOUT = 10000;
         int RETRIES = 1;
     }
 

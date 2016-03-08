@@ -1,5 +1,6 @@
 package com.example.p_code.diagnostictest;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,17 +15,41 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.VolleyError;
+import com.example.p_code.diagnostictest.Interface.VolleyInterface;
+import com.example.p_code.diagnostictest.Template.EndPointAPI;
+import com.example.p_code.diagnostictest.Utils.JSONParser;
+import com.example.p_code.diagnostictest.Utils.VolleyRequest;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class UjianActivity2 extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener
+                    , VolleyInterface {
     public static final String TAG = UjianActivity2.class.getSimpleName();
     private ListView mListView;
     private SoalAdapterNew mAdapter;
     private static Menu overview;
-    private int[] answerKey;
-    private int[] reasonKey;
+    private static int[] answerKey;
+    ProgressDialog fetchingSoal;
+    VolleyRequest requestSoal;
+    JSONParser mJSONParser;
+    com.example.p_code.diagnostictest.Utils.Soal soalsoal;
+    static int jumlahSoal;
+
+    public static void setReasonKey(int[] reasonKey) {
+        UjianActivity2.reasonKey = reasonKey;
+    }
+
+    public static void setAnswerKey(int[] answerKey) {
+        UjianActivity2.answerKey = answerKey;
+    }
+
+    private static int[] reasonKey;
     private float score;
 
     @Override
@@ -33,9 +58,13 @@ public class UjianActivity2 extends AppCompatActivity
         setContentView(R.layout.activity_ujian2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        answerKey = new int[]{1,2,1,2,3,3,4,2,3,4,2,1,1,4,4,3,2,4,4,3};
-        reasonKey = new int[]{1,2,1,2,3,3,4,2,3,4,2,1,1,4,4,3,2,4,4,3};
         score = 0;
+
+        fetchingSoal = new ProgressDialog(this);
+        requestSoal = new VolleyRequest(this);
+        mJSONParser = new JSONParser(this);
+
+        fetchSoal();
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -47,8 +76,8 @@ public class UjianActivity2 extends AppCompatActivity
         });*/
 
         mListView = (ListView) findViewById(R.id.listView);
-        mAdapter = new SoalAdapterNew(this,getDataSet());
-        mListView.setAdapter(mAdapter);
+        //mAdapter = new SoalAdapterNew(this,getDataSet());
+        //mListView.setAdapter(mAdapter);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -72,22 +101,7 @@ public class UjianActivity2 extends AppCompatActivity
             }
         });
 
-        TextView submitButton = (TextView) findViewById(R.id.tvSubmit);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for(int i=0; i<20; i++){
-                    if(changeAnswerIdtoLetter(SoalAdapterNew.getAnswers()[i]).equals(changeAnswerIdtoLetter(answerKey[i]))){
-                        score += 2.5;
-                    }
-                    if(changeReasonIdtoLetter(SoalAdapterNew.getReasons()[i]).equals(changeReasonIdtoLetter(reasonKey[i]))){
-                        score += 2.5;
-                    }
-                }
-                Log.v("Score ", String.valueOf(score));
-                score=0;
-            }
-        });
+
     }
 
     @Override
@@ -202,16 +216,18 @@ public class UjianActivity2 extends AppCompatActivity
 
     private ArrayList<Soal> getDataSet() {
         ArrayList results = new ArrayList<Soal>();
-        for (int index = 0; index < 20; index++) {
-            results.add(new Soal("Soal " + (index + 1), "Opsi AD", "Opsi B", "Opsi C", "Opsi D", "Alasan",
-                                 "Alasan 3", "Alasan 2", "Alasan 3", "Alasan 4"));
+        for (int index = 0; index < 4; index++) {
+            results.add(new Soal(soalsoal.getPertanyaan()[index], soalsoal.getJawaban()[index][0]
+                    , soalsoal.getJawaban()[index][1], soalsoal.getJawaban()[index][2], soalsoal.getJawaban()[index][3],
+                                 "Alasan", soalsoal.getAlasan()[index][0], soalsoal.getAlasan()[index][1]
+                    , soalsoal.getAlasan()[index][2], soalsoal.getAlasan()[index][3]));
         }
         return results;
     }
 
 
     public static void updateOverview(int[] answers, int[] reasons){
-        for (int i=0;i<20;i++){
+        for (int i=0;i<jumlahSoal;i++){
             if(i>9)
                 overview.getItem(i).setTitle((i + 1) + ". " + changeAnswerIdtoLetter(answers[i]) + "     Alasan: " + changeReasonIdtoLetter(reasons[i]));
             else
@@ -243,5 +259,74 @@ public class UjianActivity2 extends AppCompatActivity
 
     public static Menu getOverview(){
         return overview;
+    }
+
+    public void fetchSoal(){
+        requestSoal.sendGetRequest(EndPointAPI.DIAGTEST_SOAL);
+    }
+
+    @Override
+    public void onPrepare() {
+        fetchingSoal.setMessage("Mempersiapkan Soal..");
+        fetchingSoal.setIndeterminate(true);
+        fetchingSoal.setCancelable(false);
+        fetchingSoal.show();
+    }
+
+    @Override
+    public void onSucces(JSONObject jsonObject) {
+        fetchingSoal.dismiss();
+        mJSONParser.isSuccess(jsonObject);
+        soalsoal = mJSONParser.getSoalfromJSON();
+        jumlahSoal = mJSONParser.getJumlahSoal();
+
+        answerKey = new int[jumlahSoal];
+        reasonKey = new int[jumlahSoal];
+
+        for(int i=0;i<jumlahSoal;i++){
+            answerKey[i] = changeKuncitoId(mJSONParser.getKunci()[i].substring(0));
+            reasonKey[i] = Integer.parseInt(mJSONParser.getKunci()[i].substring(2));
+        }
+
+        mAdapter = new SoalAdapterNew(this,getDataSet());
+        mListView.setAdapter(mAdapter);
+
+        TextView submitButton = (TextView) findViewById(R.id.tvSubmit);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 0; i < jumlahSoal; i++) {
+                    if (changeAnswerIdtoLetter(SoalAdapterNew.getAnswers()[i]).equals(changeAnswerIdtoLetter(answerKey[i]))) {
+                        score += 2.5;
+                    }
+                    if (changeReasonIdtoLetter(SoalAdapterNew.getReasons()[i]).equals(changeReasonIdtoLetter(reasonKey[i]))) {
+                        score += 2.5;
+                    }
+                }
+                Log.v("Score ", String.valueOf(score));
+                score = 0;
+            }
+        });
+    }
+
+    @Override
+    public void onFailed(VolleyError errorListener) {
+        fetchingSoal.dismiss();
+        Toast.makeText(this,"Gagal mendapatkan soal! Pastikan anda terhubung dengan internet dan coba lagi..",Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    public int changeKuncitoId(String kunci){
+        switch (kunci){
+            case "a":
+                return 1;
+            case "b":
+                return 2;
+            case "c":
+                return 3;
+            case "d":
+                return 4;
+        }
+        return 0;
     }
 }

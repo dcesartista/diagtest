@@ -1,15 +1,12 @@
 package com.example.p_code.diagnostictest.Utils;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.example.p_code.diagnostictest.Utils.Data;
-
-import java.lang.reflect.Array;
 
 /**
  * Created by P-CODE on 2/13/2016.
@@ -19,6 +16,8 @@ public class JSONParser {
     //Data mainData = new Data();
     String finalNisn, finalNama, response, finalNotif;
     JSONArray array;
+    Soal soalsoal;
+    String[] kunci = new String[20];
 
     public JSONParser(Context context) {
         this.mContext = context;
@@ -60,6 +59,29 @@ public class JSONParser {
                 finalNotif = notification.toString();
 
                 Data.notification = finalNotif;
+            } else if(mResponse.equals("soal")){
+                array = jsonObject.getJSONArray("soal");
+                soalsoal = new Soal();
+
+                for(int i=0;i<array.length();i++){
+                    JSONObject soal = array.getJSONObject(i);
+                    JSONObject arrayJawaban = soal.getJSONObject("jawaban");
+                    JSONObject arrayAlasan = soal.getJSONObject("alasan");
+
+                    soalsoal.setIdSoal(i,soal.getString("id_soal"));
+                    soalsoal.setKompetensi(i, soal.getString("kompetensi"));
+                    soalsoal.setPertanyaan(i, soal.getString("pertanyaan"));
+                    soalsoal.setJawaban(i, 0, arrayJawaban.getString("ans_a"));
+                    soalsoal.setJawaban(i, 1, arrayJawaban.getString("ans_b"));
+                    soalsoal.setJawaban(i, 2, arrayJawaban.getString("ans_c"));
+                    soalsoal.setJawaban(i, 3, arrayJawaban.getString("ans_d"));
+                    soalsoal.setAlasan(i, 0, arrayAlasan.getString("rsn_1"));
+                    soalsoal.setAlasan(i, 1, arrayAlasan.getString("rsn_2"));
+                    soalsoal.setAlasan(i, 2, arrayAlasan.getString("rsn_3"));
+                    soalsoal.setAlasan(i, 3, arrayAlasan.getString("rsn_4"));
+                    kunci[i]=soal.getString("kunci");
+                    Log.d("Success bro", kunci[i]);
+                }
             }
 
             //Toast.makeText(mContext, nisn.toString(), Toast.LENGTH_SHORT).show();
@@ -68,5 +90,17 @@ public class JSONParser {
         }
 
         return true;
+    }
+
+    public Soal getSoalfromJSON(){
+        return soalsoal;
+    }
+
+    public String[] getKunci(){
+        return kunci;
+    }
+
+    public int getJumlahSoal(){
+        return array.length();
     }
 }

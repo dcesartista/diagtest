@@ -1,5 +1,6 @@
 package com.example.p_code.diagnostictest;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button loginBtn;
     TextView signupBtn;
     ProgressBar mProgress;
+    ProgressDialog progressDialog;
 
     public VolleyRequest mRequest;
     public JSONParser mJSONParser;
@@ -65,6 +67,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.login_btn:
+                progressDialog = new ProgressDialog(this);
+                progressDialog.setMessage("Logging In...");
+                progressDialog.setIndeterminate(true);
+                progressDialog.show();
                 putData();
                 break;
 
@@ -110,6 +116,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onSucces(JSONObject jsonObject) {
         onProgress(false);
+        progressDialog.dismiss();
         mJSONParser.isSuccess(jsonObject);
         switchToApplication();
     }
@@ -117,6 +124,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onFailed(VolleyError errorListener) {
         onProgress(false);
+        progressDialog.dismiss();
         Toast.makeText(this, "Error : " + errorListener, Toast.LENGTH_SHORT).show();
     }
 
