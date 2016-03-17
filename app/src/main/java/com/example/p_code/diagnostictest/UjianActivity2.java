@@ -11,10 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -33,6 +31,15 @@ public class UjianActivity2 extends AppCompatActivity
     public static final String TAG = UjianActivity2.class.getSimpleName();
     private ListView mListView;
     private SoalAdapterNew mAdapter;
+
+    public static int[] getAnswerKey() {
+        return answerKey;
+    }
+
+    public static int[] getReasonKey() {
+        return reasonKey;
+    }
+
     private static Menu overview;
     private static int[] answerKey;
     ProgressDialog fetchingSoal;
@@ -50,7 +57,7 @@ public class UjianActivity2 extends AppCompatActivity
     }
 
     private static int[] reasonKey;
-    private float score;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +65,6 @@ public class UjianActivity2 extends AppCompatActivity
         setContentView(R.layout.activity_ujian2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        score = 0;
 
         fetchingSoal = new ProgressDialog(this);
         requestSoal = new VolleyRequest(this);
@@ -222,6 +228,7 @@ public class UjianActivity2 extends AppCompatActivity
                                  "Alasan", soalsoal.getAlasan()[index][0], soalsoal.getAlasan()[index][1]
                     , soalsoal.getAlasan()[index][2], soalsoal.getAlasan()[index][3]));
         }
+        results.add(new Soal());
         return results;
     }
 
@@ -291,22 +298,6 @@ public class UjianActivity2 extends AppCompatActivity
         mAdapter = new SoalAdapterNew(this,getDataSet());
         mListView.setAdapter(mAdapter);
 
-        TextView submitButton = (TextView) findViewById(R.id.tvSubmit);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int i = 0; i < jumlahSoal; i++) {
-                    if (changeAnswerIdtoLetter(SoalAdapterNew.getAnswers()[i]).equals(changeAnswerIdtoLetter(answerKey[i]))) {
-                        score += 2.5;
-                    }
-                    if (changeReasonIdtoLetter(SoalAdapterNew.getReasons()[i]).equals(changeReasonIdtoLetter(reasonKey[i]))) {
-                        score += 2.5;
-                    }
-                }
-                Log.v("Score ", String.valueOf(score));
-                score = 0;
-            }
-        });
     }
 
     @Override
@@ -329,4 +320,5 @@ public class UjianActivity2 extends AppCompatActivity
         }
         return 0;
     }
+
 }

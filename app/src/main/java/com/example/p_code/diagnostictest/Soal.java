@@ -7,6 +7,10 @@ public class Soal {
     private String soal, alasan;
     private String[] options, reasons;
 
+    public Soal (){
+
+    }
+
     public Soal (String soal,String opsiA, String opsiB, String opsiC, String opsiD,
                  String alasan, String alasan1, String alasan2, String alasan3, String alasan4){
         super();

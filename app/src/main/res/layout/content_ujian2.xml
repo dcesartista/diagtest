@@ -16,17 +16,4 @@
         android:layout_weight="1">
     </ListView>
 
-    <TextView
-        android:id="@+id/tvSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="8"
-        android:text="SUBMIT"
-        android:textColor="@android:color/white"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:padding="16dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/rectangle"/>
-
 </LinearLayout>
