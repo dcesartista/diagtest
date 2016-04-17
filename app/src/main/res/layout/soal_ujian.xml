@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        card_view:cardBackgroundColor="@android:color/white"
         card_view:cardCornerRadius="2dp"
-        card_view:contentPadding="10dp"
+        card_view:contentPadding="20dp"
         card_view:cardElevation="8dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,10 +26,10 @@
                 >
                 <TextView
                     android:id="@+id/nomorSoal"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
-                    android:textSize="24sp"
+                    android:textSize="16sp"
                     android:gravity="center|left"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
@@ -39,8 +40,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="asdasdasdas"
-                    android:textSize="24sp"
+                    android:textSize="16sp"
                     android:paddingTop="16dp"
+                    />
+                <ImageView
+                    android:layout_below="@id/tvSoals"
+                    android:id="@+id/ivSoals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxHeight="250dp"
+                    />
+                <TextView
+                    android:layout_toRightOf="@id/nomorSoal"
+                    android:layout_below="@id/ivSoals"
+                    android:id="@+id/tvSoals2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
                     android:paddingBottom="16dp"
                     />
             </RelativeLayout>
@@ -48,41 +64,45 @@
 
             <RadioGroup
                 android:id="@+id/rgOptions"
+                android:paddingLeft="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <RadioButton
                     android:id="@+id/rbOpsiA"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Opsi Ahaha"/>
+                    android:text="A."/>
                 <RadioButton
                     android:id="@+id/rbOpsiB"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Opsi Bahaha"/>
+                    android:text="B."/>
                 <RadioButton
                     android:id="@+id/rbOpsiC"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Opsi Cahaha"/>
+                    android:text="C."/>
                 <RadioButton
                     android:id="@+id/rbOpsiD"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Opsi Dahaha"/>
+                    android:text="D."/>
             </RadioGroup>
 
             <TextView
                 android:id="@+id/tvAlasan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="asdasdasdas"
-                android:textSize="24sp"/>
+                android:paddingLeft="30dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="Alasan"
+                android:textSize="16sp"/>
 
             <RadioGroup
                 android:id="@+id/rgReasons"
+                android:paddingLeft="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -90,22 +110,22 @@
                     android:id="@+id/rbReasonA"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Opsi Ahaha"/>
+                    android:text="I."/>
                 <RadioButton
                     android:id="@+id/rbReasonB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Opsi Bahaha"/>
+                    android:text="II."/>
                 <RadioButton
                     android:id="@+id/rbReasonC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Opsi Cahaha"/>
+                    android:text="III."/>
                 <RadioButton
                     android:id="@+id/rbReasonD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Opsi Dahaha"/>
+                    android:text="IV."/>
             </RadioGroup>
 
         </LinearLayout>

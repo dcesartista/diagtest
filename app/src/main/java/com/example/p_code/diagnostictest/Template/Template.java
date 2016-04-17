@@ -17,8 +17,10 @@ public interface Template {
 
         String LOGIN = "login";
         String SIGNUP = "signUp";
+        String JAWABAN = "jawaban";
         String SOAL = "soal";
         String UPDATE = "update";
         String DELETE = "delete";
+        String ANSWER = "answer";
     }
 }

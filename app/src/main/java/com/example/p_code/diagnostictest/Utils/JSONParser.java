@@ -1,12 +1,17 @@
 package com.example.p_code.diagnostictest.Utils;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.p_code.diagnostictest.UjianActivity2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Map;
 
 /**
  * Created by P-CODE on 2/13/2016.
@@ -18,6 +23,7 @@ public class JSONParser {
     JSONArray array;
     Soal soalsoal;
     String[] kunci = new String[20];
+    Map<String, Drawable> imageMap;
 
     public JSONParser(Context context) {
         this.mContext = context;
@@ -25,6 +31,7 @@ public class JSONParser {
 
     public boolean isSuccess(JSONObject jsonObject) {
         String mResponse;
+        imageMap = UjianActivity2.getImageMap();
 
         try
         {
@@ -70,15 +77,66 @@ public class JSONParser {
 
                     soalsoal.setIdSoal(i,soal.getString("id_soal"));
                     soalsoal.setKompetensi(i, soal.getString("kompetensi"));
-                    soalsoal.setPertanyaan(i, soal.getString("pertanyaan"));
-                    soalsoal.setJawaban(i, 0, arrayJawaban.getString("ans_a"));
-                    soalsoal.setJawaban(i, 1, arrayJawaban.getString("ans_b"));
-                    soalsoal.setJawaban(i, 2, arrayJawaban.getString("ans_c"));
-                    soalsoal.setJawaban(i, 3, arrayJawaban.getString("ans_d"));
-                    soalsoal.setAlasan(i, 0, arrayAlasan.getString("rsn_1"));
-                    soalsoal.setAlasan(i, 1, arrayAlasan.getString("rsn_2"));
-                    soalsoal.setAlasan(i, 2, arrayAlasan.getString("rsn_3"));
-                    soalsoal.setAlasan(i, 3, arrayAlasan.getString("rsn_4"));
+                    String pertanyaan = soal.getString("pertanyaan");
+                    String pertanyaan1 = "";
+                    String pertanyaan2 = "";
+                    if(pertanyaan.contains("#")){
+                        int hashIndex = pertanyaan.indexOf("#");
+                        pertanyaan1 = pertanyaan.substring(0, hashIndex);
+                        pertanyaan2 = pertanyaan.substring(hashIndex+1);
+                        soalsoal.setPertanyaan(i, pertanyaan1);
+                    }
+                    else {
+                        soalsoal.setPertanyaan(i, pertanyaan);
+                    }
+                    soalsoal.setPertanyaan2(i, pertanyaan2);
+
+                    String responseGambar = soal.getString("id_gambar");
+                    if (!responseGambar.equals("0000")){
+                        soalsoal.setGambar(i, imageMap.get(responseGambar));
+                    } else{
+                        soalsoal.setGambar(i, null);
+                    }
+
+                    soalsoal.setJawaban(i, 0, "A. " + arrayJawaban.getString("ans_a"));
+                    soalsoal.setJawaban(i, 1, "B. " + arrayJawaban.getString("ans_b"));
+                    soalsoal.setJawaban(i, 2, "C. " + arrayJawaban.getString("ans_c"));
+                    soalsoal.setJawaban(i, 3, "D. " + arrayJawaban.getString("ans_d"));
+
+                    if(arrayAlasan.getString("rsn_1").contains("#")){
+                        soalsoal.setAlasan(i, 0, "");
+                        Log.v("THE KEY :", arrayAlasan.getString("rsn_1").replace("#",""));
+                        soalsoal.setGambarRsn(i, 0, imageMap.get(arrayAlasan.getString("rsn_1").replace("#","")));
+                    } else {
+                        Log.v("THE KEY :", "NOTHING");
+                        soalsoal.setAlasan(i, 0, arrayAlasan.getString("rsn_1"));
+                        soalsoal.setGambarRsn(i, 0, null);
+                    }
+
+                    if(arrayAlasan.getString("rsn_2").contains("#")){
+                        soalsoal.setAlasan(i, 1, "");
+                        soalsoal.setGambarRsn(i, 1, imageMap.get(arrayAlasan.getString("rsn_2").replace("#","")));
+                    } else {
+                        soalsoal.setAlasan(i, 1, arrayAlasan.getString("rsn_2"));
+                        soalsoal.setGambarRsn(i, 1, null);
+                    }
+
+                    if(arrayAlasan.getString("rsn_3").contains("#")){
+                        soalsoal.setAlasan(i, 2, "");
+                        soalsoal.setGambarRsn(i, 2, imageMap.get(arrayAlasan.getString("rsn_3").replace("#", "")));
+                    } else {
+                        soalsoal.setAlasan(i, 2,  arrayAlasan.getString("rsn_3"));
+                        soalsoal.setGambarRsn(i, 2, null);
+                    }
+
+                    if(arrayAlasan.getString("rsn_4").contains("#")){
+                        soalsoal.setAlasan(i, 3, "");
+                        soalsoal.setGambarRsn(i, 3, imageMap.get(arrayAlasan.getString("rsn_4").replace("#","")));
+                    } else {
+                        soalsoal.setAlasan(i, 3, arrayAlasan.getString("rsn_4"));
+                        soalsoal.setGambarRsn(i, 3, null);
+                    }
+
                     kunci[i]=soal.getString("kunci");
                     Log.d("Success bro", kunci[i]);
                 }

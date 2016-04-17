@@ -11,7 +11,7 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        float score = getIntent().getFloatExtra(SoalAdapterNew.EXTRA_SCORE,0);
+        String score = getIntent().getStringExtra(SoalAdapterNew.EXTRA_SCORE);
         TextView tvScore = (TextView) findViewById(R.id.tvScoreResult);
         tvScore.setText(""+score);
     }

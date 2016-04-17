@@ -1,6 +1,7 @@
 package com.example.p_code.diagnostictest;
 
 import android.app.ProgressDialog;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -24,6 +26,8 @@ import com.example.p_code.diagnostictest.Utils.VolleyRequest;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UjianActivity2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
@@ -32,7 +36,7 @@ public class UjianActivity2 extends AppCompatActivity
     private ListView mListView;
     private SoalAdapterNew mAdapter;
 
-    public static int[] getAnswerKey() {
+    public static String[] getAnswerKey() {
         return answerKey;
     }
 
@@ -41,18 +45,19 @@ public class UjianActivity2 extends AppCompatActivity
     }
 
     private static Menu overview;
-    private static int[] answerKey;
+    private static String[] answerKey;
     ProgressDialog fetchingSoal;
     VolleyRequest requestSoal;
     JSONParser mJSONParser;
     com.example.p_code.diagnostictest.Utils.Soal soalsoal;
     static int jumlahSoal;
+    private static Map<String,Drawable> imageMap = new HashMap();
 
     public static void setReasonKey(int[] reasonKey) {
         UjianActivity2.reasonKey = reasonKey;
     }
 
-    public static void setAnswerKey(int[] answerKey) {
+    public static void setAnswerKey(String[] answerKey) {
         UjianActivity2.answerKey = answerKey;
     }
 
@@ -65,6 +70,33 @@ public class UjianActivity2 extends AppCompatActivity
         setContentView(R.layout.activity_ujian2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TextView nama = (TextView) findViewById(R.id.tvNamaNav);
+        TextView nisn = (TextView) findViewById(R.id.tvNISNNav);
+        /*nama.setText(Data.nama);
+        nisn.setText(Data.nisn);*/
+
+        imageMap.put("gb01", getResources().getDrawable(R.drawable.gambar_gelas));
+        imageMap.put("gb02",getResources().getDrawable(R.drawable.gambar_bimetal));
+        imageMap.put("gb03",getResources().getDrawable(R.drawable.gambar_kaos));
+        imageMap.put("gb05",getResources().getDrawable(R.drawable.gambar_sakit));
+        imageMap.put("gb06",getResources().getDrawable(R.drawable.gambar_bimetal2));
+        imageMap.put("gb13",getResources().getDrawable(R.drawable.gambar_suhu));
+
+        imageMap.put("rsn04_1",getResources().getDrawable(R.drawable.opsi4_1));
+        imageMap.put("rsn04_2",getResources().getDrawable(R.drawable.opsi4_2));
+        imageMap.put("rsn04_3",getResources().getDrawable(R.drawable.opsi4_3));
+        imageMap.put("rsn04_4",getResources().getDrawable(R.drawable.opsi4_4));
+        imageMap.put("rsn09_1",getResources().getDrawable(R.drawable.opsi9_1));
+        imageMap.put("rsn09_2",getResources().getDrawable(R.drawable.opsi9_2));
+        imageMap.put("rsn09_3",getResources().getDrawable(R.drawable.opsi9_3));
+        imageMap.put("rsn09_4",getResources().getDrawable(R.drawable.opsi9_4));
+        imageMap.put("rsn10_2",getResources().getDrawable(R.drawable.opsi10_2));
+        imageMap.put("rsn10_4",getResources().getDrawable(R.drawable.opsi10_4));
+        imageMap.put("rsn12_1",getResources().getDrawable(R.drawable.opsi12_1));
+        imageMap.put("rsn12_2",getResources().getDrawable(R.drawable.opsi12_2));
+        imageMap.put("rsn12_3",getResources().getDrawable(R.drawable.opsi12_3));
+        imageMap.put("rsn12_4",getResources().getDrawable(R.drawable.opsi12_4));
 
         fetchingSoal = new ProgressDialog(this);
         requestSoal = new VolleyRequest(this);
@@ -135,9 +167,9 @@ public class UjianActivity2 extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -195,7 +227,7 @@ public class UjianActivity2 extends AppCompatActivity
             case R.id.ov15:
                 mListView.setSelection(14);
                 break;
-            case R.id.ov16:
+            /*case R.id.ov16:
                 mListView.setSelection(15);
                 break;
             case R.id.ov17:
@@ -209,7 +241,7 @@ public class UjianActivity2 extends AppCompatActivity
                 break;
             case R.id.ov20:
                 mListView.setSelection(19);
-                break;
+                break;*/
         }
         //mListView.smoothScrollToPosition(id);
 
@@ -222,12 +254,12 @@ public class UjianActivity2 extends AppCompatActivity
 
     private ArrayList<Soal> getDataSet() {
         ArrayList results = new ArrayList<Soal>();
-        for (int index = 0; index < 4; index++) {
+        /*for (int index = 0; index < 4; index++) {
             results.add(new Soal(soalsoal.getPertanyaan()[index], soalsoal.getJawaban()[index][0]
                     , soalsoal.getJawaban()[index][1], soalsoal.getJawaban()[index][2], soalsoal.getJawaban()[index][3],
                                  "Alasan", soalsoal.getAlasan()[index][0], soalsoal.getAlasan()[index][1]
                     , soalsoal.getAlasan()[index][2], soalsoal.getAlasan()[index][3]));
-        }
+        }*/
         results.add(new Soal());
         return results;
     }
@@ -287,15 +319,16 @@ public class UjianActivity2 extends AppCompatActivity
         soalsoal = mJSONParser.getSoalfromJSON();
         jumlahSoal = mJSONParser.getJumlahSoal();
 
-        answerKey = new int[jumlahSoal];
+        answerKey = new String[jumlahSoal];
         reasonKey = new int[jumlahSoal];
 
         for(int i=0;i<jumlahSoal;i++){
-            answerKey[i] = changeKuncitoId(mJSONParser.getKunci()[i].substring(0));
+            Log.v("kunci", mJSONParser.getKunci()[i].substring(2));
+            answerKey[i] = mJSONParser.getKunci()[i].toUpperCase().substring(0,1);
             reasonKey[i] = Integer.parseInt(mJSONParser.getKunci()[i].substring(2));
         }
 
-        mAdapter = new SoalAdapterNew(this,getDataSet());
+        mAdapter = new SoalAdapterNew(this, soalsoal);
         mListView.setAdapter(mAdapter);
 
     }
@@ -319,6 +352,10 @@ public class UjianActivity2 extends AppCompatActivity
                 return 4;
         }
         return 0;
+    }
+
+    public static Map<String, Drawable> getImageMap(){
+        return imageMap;
     }
 
 }
