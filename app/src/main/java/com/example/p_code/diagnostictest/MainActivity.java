@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(this, UjianActivity2.class);
                 startActivity(intent);*/
             case R.id.cardUjian:
-                Intent intent = new Intent(this, UjianActivity2.class);
+                Intent intent = new Intent(this, PetunjukActivity.class);
                 startActivity(intent);
                 break;
             case R.id.cardMateri:

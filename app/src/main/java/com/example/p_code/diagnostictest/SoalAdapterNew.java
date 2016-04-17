@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,13 +50,14 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
     private float jumlahBenar;
     ProgressDialog progressDialog;
     String theScore;
+    long timeRemaining;
     private VolleyRequest mRequest;
     String formatKirimJawaban;
     float jumlahBenarKompetensi1, jumlahBenarKompetensi2,
             jumlahBenarKompetensi3, jumlahBenarKompetensi4;
     private boolean isLulus;
 
-    public SoalAdapterNew(Context context, Soal mSoal, Activity activity) {
+    public SoalAdapterNew(final Context context, Soal mSoal, Activity activity) {
         this.context = context;
         this.mSoal = mSoal;
         this.activity = activity;
@@ -64,6 +66,29 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
         progressDialog = new ProgressDialog(context);
         answers = new int[100];
         reasons = new int[100];
+
+        new CountDownTimer(4800000, 1000){
+            @Override
+            public void onTick(long millisUntilFinished) {
+                UjianActivity2.setTimeRemaining(millisUntilFinished/1000);
+                if (millisUntilFinished == 1800000){
+                    Toast.makeText(context,"Waktu anda tinggal : " + millisUntilFinished/60000 + " menit",Toast.LENGTH_LONG).show();
+                } else if (millisUntilFinished == 900000){
+                    Toast.makeText(context,"Waktu anda tinggal : " + millisUntilFinished/60000 + " menit",Toast.LENGTH_LONG).show();
+                } else if (millisUntilFinished == 300000){
+                    Toast.makeText(context,"Waktu anda tinggal : " + millisUntilFinished/60000 + " menit",Toast.LENGTH_LONG).show();
+                } if (millisUntilFinished == 60000){
+                    Toast.makeText(context,"Waktu anda tinggal : " + millisUntilFinished/1000 + " detik",Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onFinish() {
+                submitTest(true);
+            }
+        }.start();
+
         jumlahBenarKompetensi1 = 0;
         jumlahBenarKompetensi2 = 0;
         jumlahBenarKompetensi3 = 0;
@@ -151,78 +176,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    jumlahBenar = 0;
-                    score = 0;
-                    formatKirimJawaban = "";
-                    for (int i = 0; i < jumlahSoal; i++) {
-                        formatKirimJawaban = formatKirimJawaban.concat(mSoal.getIdSoal()[i]+"_"+UjianActivity2.changeAnswerIdtoLetter(answers[i]).toLowerCase()+
-                                                    "."+UjianActivity2.changeReasonIdtoLetter(reasons[i])+"#");
-                        Log.v("jawaban", UjianActivity2.changeAnswerIdtoLetter(answers[i]));
-                        Log.v("kunci", ""+UjianActivity2.getAnswerKey()[i]);
-                        Log.v("alasan",UjianActivity2.changeReasonIdtoLetter(reasons[i]));
-                        Log.v("kunci alasan", UjianActivity2.changeReasonIdtoLetter(UjianActivity2.getReasonKey()[i]));
-
-                        if (UjianActivity2.changeAnswerIdtoLetter(answers[i]).equals(UjianActivity2.getAnswerKey()[i])) {
-                            if (mSoal.getKompetensi()[i].equals("Memahami dan menjelaskan peristiwa pemuaian")){
-                                jumlahBenarKompetensi1+=1;
-                            } else if (mSoal.getKompetensi()[i].equals("Memahami skala suhu pada termometer")){
-                                jumlahBenarKompetensi2+=1;
-                            } else if (mSoal.getKompetensi()[i].equals("Mengetahui definisi suhu dan thermometer")){
-                                jumlahBenarKompetensi3+=1;
-                            } else if (mSoal.getKompetensi()[i].equals("Memahami kalor, perubahan suhu serta perpindahan kalor dan akibatnya")){
-                                jumlahBenarKompetensi4+=1;
-                            }
-                            jumlahBenar+=1;
-                        }
-                        if (UjianActivity2.changeReasonIdtoLetter(reasons[i]).equals(UjianActivity2.changeReasonIdtoLetter(UjianActivity2.getReasonKey()[i]))) {
-                            if (mSoal.getKompetensi()[i].equals(Data.kompetensi1)){
-                                jumlahBenarKompetensi1+=1;
-                            } else if (mSoal.getKompetensi()[i].equals(Data.kompetensi2)){
-                                jumlahBenarKompetensi2+=1;
-                            } else if (mSoal.getKompetensi()[i].equals(Data.kompetensi3)){
-                                jumlahBenarKompetensi3+=1;
-                            } else if (mSoal.getKompetensi()[i].equals(Data.kompetensi4)){
-                                jumlahBenarKompetensi4+=1;
-                            }
-                            jumlahBenar+=1;
-                        }
-                    }
-
-                    Data.pemahamanKompetensi1 = (jumlahBenarKompetensi1/(Data.jumlahKompetensi1*2)) * 100;
-                    Data.pemahamanKompetensi2 = (jumlahBenarKompetensi2/(Data.jumlahKompetensi2*2)) * 100;
-                    Data.pemahamanKompetensi3 = (jumlahBenarKompetensi3/(Data.jumlahKompetensi3*2)) * 100;
-                    Data.pemahamanKompetensi4 = (jumlahBenarKompetensi4/(Data.jumlahKompetensi4*2)) * 100;
-
-                    Log.v("ASDASDASDAS","AHDAHSDAHS");
-                    Log.v("formatted answer",formatKirimJawaban);
-                    Log.v("JUMLAH BENAR", ""+jumlahBenar);
-                    Log.v("JUMLAH TOTAL", ""+(jumlahSoal*2));
-
-                    score = (jumlahBenar/(jumlahSoal*2))*100;
-                    if(score >= 80){
-                        isLulus = true;
-                    } else {
-                        isLulus = false;
-                    }
-
-                    if(score>100)
-                        score = 100;
-                    theScore = String.format("%.2f", score);
-                    Log.v("Score ", String.valueOf(score));
-                    new AlertDialog.Builder(context)
-                            .setMessage("Apakah anda yakin? \n Pastikan anda mengecek jawaban anda sebelum melakukan submit" )
-                            .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-
-                                public void onClick(DialogInterface dialog, int whichButton) {
-                                    sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
-                                    Log.v("FORMATTED FIX", formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
-                                }})
-                            .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    score=0;
-                                }
-                            }).show();
+                    submitTest(false);
                 }
             });
         }
@@ -312,6 +266,88 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
         }
 
         return view;
+    }
+
+    private void submitTest(boolean timeOut){
+        jumlahBenar = 0;
+        score = 0;
+        formatKirimJawaban = "";
+        for (int i = 0; i < jumlahSoal; i++) {
+            formatKirimJawaban = formatKirimJawaban.concat(mSoal.getIdSoal()[i]+"_"+UjianActivity2.changeAnswerIdtoLetter(answers[i]).toLowerCase()+
+                                                           "."+UjianActivity2.changeReasonIdtoLetter(reasons[i])+"#");
+            Log.v("jawaban", UjianActivity2.changeAnswerIdtoLetter(answers[i]));
+            Log.v("kunci", ""+UjianActivity2.getAnswerKey()[i]);
+            Log.v("alasan",UjianActivity2.changeReasonIdtoLetter(reasons[i]));
+            Log.v("kunci alasan", UjianActivity2.changeReasonIdtoLetter(UjianActivity2.getReasonKey()[i]));
+
+            if (UjianActivity2.changeAnswerIdtoLetter(answers[i]).equals(UjianActivity2.getAnswerKey()[i])) {
+                if (mSoal.getKompetensi()[i].equals("Memahami dan menjelaskan peristiwa pemuaian")){
+                    jumlahBenarKompetensi1+=1;
+                } else if (mSoal.getKompetensi()[i].equals("Memahami skala suhu pada termometer")){
+                    jumlahBenarKompetensi2+=1;
+                } else if (mSoal.getKompetensi()[i].equals("Mengetahui definisi suhu dan thermometer")){
+                    jumlahBenarKompetensi3+=1;
+                } else if (mSoal.getKompetensi()[i].equals("Memahami kalor, perubahan suhu serta perpindahan kalor dan akibatnya")){
+                    jumlahBenarKompetensi4+=1;
+                }
+                jumlahBenar+=1;
+            }
+            if (UjianActivity2.changeReasonIdtoLetter(reasons[i]).equals(UjianActivity2.changeReasonIdtoLetter(UjianActivity2.getReasonKey()[i]))) {
+                if (mSoal.getKompetensi()[i].equals(Data.kompetensi1)){
+                    jumlahBenarKompetensi1+=1;
+                } else if (mSoal.getKompetensi()[i].equals(Data.kompetensi2)){
+                    jumlahBenarKompetensi2+=1;
+                } else if (mSoal.getKompetensi()[i].equals(Data.kompetensi3)){
+                    jumlahBenarKompetensi3+=1;
+                } else if (mSoal.getKompetensi()[i].equals(Data.kompetensi4)){
+                    jumlahBenarKompetensi4+=1;
+                }
+                jumlahBenar+=1;
+            }
+        }
+
+        Data.pemahamanKompetensi1 = (jumlahBenarKompetensi1/(Data.jumlahKompetensi1*2)) * 100;
+        Data.pemahamanKompetensi2 = (jumlahBenarKompetensi2/(Data.jumlahKompetensi2*2)) * 100;
+        Data.pemahamanKompetensi3 = (jumlahBenarKompetensi3/(Data.jumlahKompetensi3*2)) * 100;
+        Data.pemahamanKompetensi4 = (jumlahBenarKompetensi4/(Data.jumlahKompetensi4*2)) * 100;
+
+        Log.v("ASDASDASDAS","AHDAHSDAHS");
+        Log.v("formatted answer",formatKirimJawaban);
+        Log.v("JUMLAH BENAR", ""+jumlahBenar);
+        Log.v("JUMLAH TOTAL", ""+(jumlahSoal*2));
+
+        score = (jumlahBenar/(jumlahSoal*2))*100;
+        if(score >= 80){
+            isLulus = true;
+        } else {
+            isLulus = false;
+        }
+
+        if(score>100)
+            score = 100;
+        theScore = String.format("%.2f", score);
+        Log.v("Score ", String.valueOf(score));
+
+        if(timeOut){
+            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+            Log.v("FORMATTED FIX", formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+        } else {
+            new AlertDialog.Builder(context)
+                    .setMessage("Apakah anda yakin? \n Pastikan anda mengecek jawaban anda sebelum melakukan submit" )
+                    .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+                            Log.v("FORMATTED FIX", formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+                        }})
+                    .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            score=0;
+                        }
+                    }).show();
+        }
+
     }
 
     private void sendAnswer(String formattedAnswer){

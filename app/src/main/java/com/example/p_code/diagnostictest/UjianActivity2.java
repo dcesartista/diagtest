@@ -49,6 +49,16 @@ public class UjianActivity2 extends AppCompatActivity
     }
 
     private static Menu overview;
+
+    public static long getTimeRemaining() {
+        return timeRemaining;
+    }
+
+    public static void setTimeRemaining(long timeRemaining) {
+        UjianActivity2.timeRemaining = timeRemaining;
+    }
+
+    private static long timeRemaining;
     private static String[] answerKey;
     ProgressDialog fetchingSoal;
     VolleyRequest requestSoal;
