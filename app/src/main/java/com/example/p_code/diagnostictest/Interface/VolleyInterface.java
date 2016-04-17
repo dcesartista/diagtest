@@ -9,6 +9,6 @@ import org.json.JSONObject;
  */
 public interface VolleyInterface {
     void onPrepare();
-    void onSucces(JSONObject jsonObject);
+    void onSuccess(JSONObject jsonObject);
     void onFailed(VolleyError errorListener);
 }

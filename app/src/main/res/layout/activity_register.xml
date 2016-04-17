@@ -155,11 +155,11 @@
             android:textColor="@android:color/white"
             android:background="@drawable/rounded_rectangle_white_accent"/>
 
-        <ProgressBar
+        <!--<ProgressBar
             android:id="@+id/login_progress"
             android:layout_gravity="center_horizontal"
             android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_height="25dp" />-->
 
     </LinearLayout>
 

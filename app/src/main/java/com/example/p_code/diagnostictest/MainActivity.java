@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(this, UjianActivity2.class);
                 startActivity(intent);
                 break;
+            case R.id.cardMateri:
+                Intent intent1 = new Intent(this, MateriActivity.class);
+                startActivity(intent1);
+                break;
         }
     }
 }

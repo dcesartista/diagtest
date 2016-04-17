@@ -1,5 +1,6 @@
 package com.example.p_code.diagnostictest;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -35,26 +36,38 @@ import java.util.Map;
 public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
     private final static String TAG = SoalAdapterNew.class.getSimpleName();
     public final static String EXTRA_SCORE = "com.example.p_code.diagnostictest.SCORE";
+    public final static String EXTRA_LULUS = "com.example.p_code.diagnostictest.LULUS";
     private Soal mSoal;
     private Context context;
+    private Activity activity;
     private static LayoutInflater inflater = null;
     SoalHolder soalHolder;
     static float jumlahSoal = 15;
-    static int answers[] = new int[100];
-    static int reasons[] = new int[100];
+    static int answers[];
+    static int reasons[];
     private float score;
     private float jumlahBenar;
     ProgressDialog progressDialog;
     String theScore;
     private VolleyRequest mRequest;
     String formatKirimJawaban;
+    float jumlahBenarKompetensi1, jumlahBenarKompetensi2,
+            jumlahBenarKompetensi3, jumlahBenarKompetensi4;
+    private boolean isLulus;
 
-    public SoalAdapterNew(Context context, Soal mSoal) {
+    public SoalAdapterNew(Context context, Soal mSoal, Activity activity) {
         this.context = context;
         this.mSoal = mSoal;
+        this.activity = activity;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mRequest = new VolleyRequest(this);
         progressDialog = new ProgressDialog(context);
+        answers = new int[100];
+        reasons = new int[100];
+        jumlahBenarKompetensi1 = 0;
+        jumlahBenarKompetensi2 = 0;
+        jumlahBenarKompetensi3 = 0;
+        jumlahBenarKompetensi4 = 0;
     }
 
     @Override
@@ -84,14 +97,18 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
     }
 
     @Override
-    public void onSucces(JSONObject jsonObject) {
+    public void onSuccess(JSONObject jsonObject) {
         if (progressDialog.isShowing()){
             progressDialog.dismiss();
         }
         Intent intent = new Intent(context,ResultActivity.class);
         Log.v("Score ", theScore);
         intent.putExtra(EXTRA_SCORE, theScore);
+        intent.putExtra(EXTRA_LULUS, isLulus);
+        answers = null;
+        reasons = null;
         context.startActivity(intent);
+        activity.finish();
     }
 
     @Override
@@ -146,17 +163,48 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
                         Log.v("kunci alasan", UjianActivity2.changeReasonIdtoLetter(UjianActivity2.getReasonKey()[i]));
 
                         if (UjianActivity2.changeAnswerIdtoLetter(answers[i]).equals(UjianActivity2.getAnswerKey()[i])) {
+                            if (mSoal.getKompetensi()[i].equals("Memahami dan menjelaskan peristiwa pemuaian")){
+                                jumlahBenarKompetensi1+=1;
+                            } else if (mSoal.getKompetensi()[i].equals("Memahami skala suhu pada termometer")){
+                                jumlahBenarKompetensi2+=1;
+                            } else if (mSoal.getKompetensi()[i].equals("Mengetahui definisi suhu dan thermometer")){
+                                jumlahBenarKompetensi3+=1;
+                            } else if (mSoal.getKompetensi()[i].equals("Memahami kalor, perubahan suhu serta perpindahan kalor dan akibatnya")){
+                                jumlahBenarKompetensi4+=1;
+                            }
                             jumlahBenar+=1;
                         }
                         if (UjianActivity2.changeReasonIdtoLetter(reasons[i]).equals(UjianActivity2.changeReasonIdtoLetter(UjianActivity2.getReasonKey()[i]))) {
+                            if (mSoal.getKompetensi()[i].equals(Data.kompetensi1)){
+                                jumlahBenarKompetensi1+=1;
+                            } else if (mSoal.getKompetensi()[i].equals(Data.kompetensi2)){
+                                jumlahBenarKompetensi2+=1;
+                            } else if (mSoal.getKompetensi()[i].equals(Data.kompetensi3)){
+                                jumlahBenarKompetensi3+=1;
+                            } else if (mSoal.getKompetensi()[i].equals(Data.kompetensi4)){
+                                jumlahBenarKompetensi4+=1;
+                            }
                             jumlahBenar+=1;
                         }
                     }
+
+                    Data.pemahamanKompetensi1 = (jumlahBenarKompetensi1/(Data.jumlahKompetensi1*2)) * 100;
+                    Data.pemahamanKompetensi2 = (jumlahBenarKompetensi2/(Data.jumlahKompetensi2*2)) * 100;
+                    Data.pemahamanKompetensi3 = (jumlahBenarKompetensi3/(Data.jumlahKompetensi3*2)) * 100;
+                    Data.pemahamanKompetensi4 = (jumlahBenarKompetensi4/(Data.jumlahKompetensi4*2)) * 100;
+
                     Log.v("ASDASDASDAS","AHDAHSDAHS");
                     Log.v("formatted answer",formatKirimJawaban);
                     Log.v("JUMLAH BENAR", ""+jumlahBenar);
                     Log.v("JUMLAH TOTAL", ""+(jumlahSoal*2));
-                    score = (float) (jumlahBenar/(jumlahSoal*2))*100;
+
+                    score = (jumlahBenar/(jumlahSoal*2))*100;
+                    if(score >= 80){
+                        isLulus = true;
+                    } else {
+                        isLulus = false;
+                    }
+
                     if(score>100)
                         score = 100;
                     theScore = String.format("%.2f", score);
@@ -187,6 +235,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
             //Log.v("Soal No", String.valueOf(soalPosition));
 
             if (answers[soalPosition] > 0) {
+                Log.v("JAWaBAN", answers[soalPosition]+"");
                 soalHolder.options.check(soalHolder.options.getChildAt(answers[soalPosition] - 1).getId());
             }
 
@@ -217,7 +266,21 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
             soalHolder.options.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    answers[soalPosition] = checkedId - 2131492978 - 40;
+                    switch (checkedId) {
+                        case R.id.rbOpsiA:
+                            answers[soalPosition] = 1;
+                            break;
+                        case R.id.rbOpsiB:
+                            answers[soalPosition] = 2;
+                            break;
+                        case R.id.rbOpsiC:
+                            answers[soalPosition] = 3;
+                            break;
+                        case R.id.rbOpsiD:
+                            answers[soalPosition] = 4;
+                            break;
+                    }
+                    //answers[soalPosition] = checkedId - 2131492978 - 41;
                     UjianActivity2.updateOverview(answers, reasons);
                 }
             });
@@ -225,7 +288,21 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
             soalHolder.reasons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    reasons[soalPosition] = checkedId - 2131492984 - 40;
+                    switch (checkedId) {
+                        case R.id.rbReasonA:
+                            reasons[soalPosition] = 1;
+                            break;
+                        case R.id.rbReasonB:
+                            reasons[soalPosition] = 2;
+                            break;
+                        case R.id.rbReasonC:
+                            reasons[soalPosition] = 3;
+                            break;
+                        case R.id.rbReasonD:
+                            reasons[soalPosition] = 4;
+                            break;
+                    }
+                    //reasons[soalPosition] = checkedId - 2131492984 - 41;
                     UjianActivity2.updateOverview(answers, reasons);
                 }
             });

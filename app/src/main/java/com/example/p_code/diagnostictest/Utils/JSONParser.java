@@ -29,7 +29,7 @@ public class JSONParser {
         this.mContext = context;
     }
 
-    public boolean isSuccess(JSONObject jsonObject) {
+    public boolean isSuccess(JSONObject jsonObject, Context context) {
         String mResponse;
         imageMap = UjianActivity2.getImageMap();
 
@@ -54,6 +54,8 @@ public class JSONParser {
                 //mainData.setData(finalNisn, finalNama);
                 Data.nama = finalNama;
                 Data.nisn = finalNisn;
+
+                return true;
                 //Toast.makeText(mContext, finalNisn + finalNama, Toast.LENGTH_LONG).show();
 
             } else if (mResponse.equals("signup")) {
@@ -66,17 +68,37 @@ public class JSONParser {
                 finalNotif = notification.toString();
 
                 Data.notification = finalNotif;
+
+                Toast.makeText(context,notification,Toast.LENGTH_LONG).show();
+
+                return true;
             } else if(mResponse.equals("soal")){
                 array = jsonObject.getJSONArray("soal");
                 soalsoal = new Soal();
+                Data.jumlahKompetensi1 = 0;
+                Data.jumlahKompetensi2 = 0;
+                Data.jumlahKompetensi3 = 0;
+                Data.jumlahKompetensi4 = 0;
 
                 for(int i=0;i<array.length();i++){
                     JSONObject soal = array.getJSONObject(i);
                     JSONObject arrayJawaban = soal.getJSONObject("jawaban");
                     JSONObject arrayAlasan = soal.getJSONObject("alasan");
 
-                    soalsoal.setIdSoal(i,soal.getString("id_soal"));
+                    Log.v("KOMPETENSI", soal.getString("kompetensi"));
+
+                    soalsoal.setIdSoal(i, soal.getString("id_soal"));
                     soalsoal.setKompetensi(i, soal.getString("kompetensi"));
+                    if (soal.getString("kompetensi").equals("Memahami dan menjelaskan peristiwa pemuaian")){
+                        Data.jumlahKompetensi1+=1;
+                    } else if (soal.getString("kompetensi").equals("Memahami skala suhu pada termometer")){
+                        Data.jumlahKompetensi2+=1;
+                    } else if (soal.getString("kompetensi").equals("Mengetahui definisi suhu dan thermometer")){
+                        Data.jumlahKompetensi3+=1;
+                    } else if (soal.getString("kompetensi").equals("Memahami kalor, perubahan suhu serta perpindahan kalor dan akibatnya")){
+                        Data.jumlahKompetensi4+=1;
+                    }
+
                     String pertanyaan = soal.getString("pertanyaan");
                     String pertanyaan1 = "";
                     String pertanyaan2 = "";
@@ -140,6 +162,12 @@ public class JSONParser {
                     kunci[i]=soal.getString("kunci");
                     Log.d("Success bro", kunci[i]);
                 }
+                return true;
+            }
+            else if (response.equals("error")){
+                String message = jsonObject.getString("message");
+                Toast.makeText(context,message,Toast.LENGTH_LONG).show();
+                return false;
             }
 
             //Toast.makeText(mContext, nisn.toString(), Toast.LENGTH_SHORT).show();
@@ -147,7 +175,7 @@ public class JSONParser {
             Toast.makeText(mContext, "" + e, Toast.LENGTH_SHORT).show();
         }
 
-        return true;
+        return false;
     }
 
     public Soal getSoalfromJSON(){

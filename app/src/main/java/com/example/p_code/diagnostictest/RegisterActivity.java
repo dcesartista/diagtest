@@ -1,5 +1,7 @@
 package com.example.p_code.diagnostictest;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     public VolleyRequest mRequest;
     public JSONParser mJSONParser;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         nameBox = (EditText) findViewById(R.id.nama_box);
         passwordBox = (EditText) findViewById(R.id.password_box);
         confirmBox = (EditText) findViewById(R.id.confirm_box);
-        mProgress = (ProgressBar) findViewById(R.id.login_progress);
+        //mProgress = (ProgressBar) findViewById(R.id.login_progress);
 
         signupBtn = (Button) findViewById(R.id.signup_btn);
 
@@ -83,16 +86,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.signup_btn:
+                progressDialog = new ProgressDialog(this);
+                progressDialog.setMessage("Logging In...");
+                progressDialog.setIndeterminate(true);
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
+                progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        mRequest.cancelAllRequest();
+                    }
+                });
                 signUp();
         }
     }
 
     private void onProgress(boolean isLoading) {
-        if(isLoading == true) {
-            mProgress.setVisibility(ProgressBar.VISIBLE);
-        } else {
-            mProgress.setVisibility(ProgressBar.GONE);
-        }
+//        if(isLoading == true) {
+//            mProgress.setVisibility(ProgressBar.VISIBLE);
+//        } else {
+//            mProgress.setVisibility(ProgressBar.GONE);
+//        }
     }
 
     private void switchToApplication() {
@@ -107,10 +121,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    public void onSucces(JSONObject jsonObject) {
+    public void onSuccess(JSONObject jsonObject) {
         onProgress(false);
-        mJSONParser.isSuccess(jsonObject);
-        Toast.makeText(this, Data.notification, Toast.LENGTH_LONG).show();
+        progressDialog.dismiss();
+        mJSONParser.isSuccess(jsonObject, this);
+        //Toast.makeText(this, Data.notification, Toast.LENGTH_LONG).show();
         if (Data.notification.equals("Sign Up Successful")) {
             switchToApplication();
         }
@@ -120,7 +135,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onFailed(VolleyError errorListener) {
         onProgress(false);
-        Toast.makeText(this, "Error : " + errorListener, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sign Up gagal! Pastikan anda terhubung dengan internet!", Toast.LENGTH_SHORT).show();
     }
 
     @Override

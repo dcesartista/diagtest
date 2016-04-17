@@ -15,7 +15,7 @@
         >
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.NoActionBar"
             >
         </activity>
         <activity android:name=".LoginActivity"/>
@@ -30,11 +30,20 @@
         <activity
             android:name=".UjianActivity2"
             android:label="@string/title_activity_ujian2"
-            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar"
             >
         </activity>
         <activity android:name=".ResultActivity">
+        </activity>
+        <activity
+            android:name=".MateriActivity"
+            android:label="Materi"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+        </activity>
+        <activity android:name=".PetunjukActivity"
+                    android:label="Petunjuk Mengerjakan"
+                    android:theme="@style/AppTheme">
         </activity>
     </application>
 

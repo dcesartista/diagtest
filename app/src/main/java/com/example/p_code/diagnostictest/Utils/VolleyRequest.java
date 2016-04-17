@@ -36,7 +36,7 @@ public class VolleyRequest {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        mVolleyInterface.onSucces(response);
+                        mVolleyInterface.onSuccess(response);
                         Log.i("Success", response + "");
                     }
                 }, new Response.ErrorListener() {
@@ -57,7 +57,7 @@ public class VolleyRequest {
         mCustomRequest = new CustomRequest(Request.Method.POST, endPointAPI, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                mVolleyInterface.onSucces(response);
+                mVolleyInterface.onSuccess(response);
             }
         }, new Response.ErrorListener() {
             @Override

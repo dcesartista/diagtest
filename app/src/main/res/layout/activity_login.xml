@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/classroom">
 
-    <ImageView
+    <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/overlay_light"/>
+        android:background="@drawable/overlay_light"/>
 
     <LinearLayout
         android:layout_width="320dp"
@@ -123,12 +123,12 @@
             android:textAllCaps="false"
             android:layout_marginTop="10dp"/>
 
-        <ProgressBar
+        <!--<ProgressBar
             android:id="@+id/login_progress"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_height="25dp" />-->
 
     </LinearLayout>
 

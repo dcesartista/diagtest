@@ -1,17 +1,20 @@
 package com.example.p_code.diagnostictest;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.example.p_code.diagnostictest.Interface.VolleyInterface;
 import com.example.p_code.diagnostictest.Template.EndPointAPI;
+import com.example.p_code.diagnostictest.Utils.Data;
 import com.example.p_code.diagnostictest.Utils.JSONParser;
 import com.example.p_code.diagnostictest.Utils.VolleyRequest;
 
@@ -71,10 +75,13 @@ public class UjianActivity2 extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TextView nama = (TextView) findViewById(R.id.tvNamaNav);
-        TextView nisn = (TextView) findViewById(R.id.tvNISNNav);
-        /*nama.setText(Data.nama);
-        nisn.setText(Data.nisn);*/
+        NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navView.getHeaderView(0);
+
+        TextView nama = (TextView) headerView.findViewById(R.id.tvNamaNav);
+        TextView nisn = (TextView) headerView.findViewById(R.id.tvNISNNav);
+        nama.setText(Data.nama);
+        nisn.setText(Data.nisn);
 
         imageMap.put("gb01", getResources().getDrawable(R.drawable.gambar_gelas));
         imageMap.put("gb02",getResources().getDrawable(R.drawable.gambar_bimetal));
@@ -148,7 +155,19 @@ public class UjianActivity2 extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            new AlertDialog.Builder(this)
+                    .setMessage("Apabila anda kembali ke menu utama, jawaban anda akan hilang \n Apakah anda yakin akan kembali ke menu utama?" )
+                    .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            UjianActivity2.super.onBackPressed();
+                        }})
+                    .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).show();
         }
     }
 
@@ -173,6 +192,8 @@ public class UjianActivity2 extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -313,9 +334,9 @@ public class UjianActivity2 extends AppCompatActivity
     }
 
     @Override
-    public void onSucces(JSONObject jsonObject) {
+    public void onSuccess(JSONObject jsonObject) {
         fetchingSoal.dismiss();
-        mJSONParser.isSuccess(jsonObject);
+        mJSONParser.isSuccess(jsonObject, this);
         soalsoal = mJSONParser.getSoalfromJSON();
         jumlahSoal = mJSONParser.getJumlahSoal();
 
@@ -328,7 +349,7 @@ public class UjianActivity2 extends AppCompatActivity
             reasonKey[i] = Integer.parseInt(mJSONParser.getKunci()[i].substring(2));
         }
 
-        mAdapter = new SoalAdapterNew(this, soalsoal);
+        mAdapter = new SoalAdapterNew(this, soalsoal, this);
         mListView.setAdapter(mAdapter);
 
     }
