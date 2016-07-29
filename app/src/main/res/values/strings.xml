@@ -1,103 +1,180 @@
 <resources>
-    <string name="app_name">Diagnostic Test</string>
-    <string name="ujian_label">Ujian</string>
-    <string name="title_activity_ujian2">Ujian</string>
+	<string name="app_name">Diagnostic Test</string>
+	<string name="ujian_label">Ujian</string>
+	<string name="title_activity_ujian2">Ujian</string>
 
-    <string name="aturan1">• Soal terdiri dari 15 butir soal.</string>
-    <string name="aturan2">• Berdoalah terlebih dahulu sebelum mengerjakan.</string>
-    <string name="aturan3">• Terdapat pilihan jawaban dan pilihan alasan, pilihlah opsi A,B,C, atau D dan 1, 2,3 atau 4 yang kamu anggap benar. Contoh : Pilih A kemudian pilih 2.</string>
-    <string name="aturan4">• Waktu mengerjakan 80 Menit (2 Jam Pelajaran).</string>
-    <string name="aturan5">• Teliti kembali sebelum submit jawaban.</string>
+	<string name="aturan1">Soal terdiri dari 15 butir soal.</string>
+	<string name="aturan2">Berdoalah terlebih dahulu sebelum mengerjakan.</string>
+	<string name="aturan3">Terdapat pilihan jawaban dan pilihan alasan, pilihlah opsi A,B,C, atau
+		D dan 1, 2,3 atau 4 yang kamu anggap benar. Contoh : Pilih A kemudian pilih 2.
+	</string>
+	<string name="aturan4">Waktu mengerjakan 60 Menit.</string>
+	<string name="aturan5">Teliti kembali sebelum submit jawaban.</string>
 
-    <string name="result_text">Nilai dari ujian yang pernah anda kerjakan dapat dilihat dengan memilih menu history.</string>
+	<string name="result_text">Nilai dari ujian yang pernah anda kerjakan dapat dilihat dengan
+		memilih menu history.
+	</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="suhu_1">Suhu adalah besaran yang menyatakan ukuran derajat panas atau dinginnya suatu benda. Alat yang digunakan untuk mengukur suhu disebut termometer.</string>
-    <string name="suhu_2">Termometer biasanya berupa sebuah pipa kaca sempit tertutup yang berisi zat cair dan memiliki skala. Prinsip kerja termometer ada pada pengaruh perubahan suhu terhadap perubahan volumenya. Coba perhatikan volume air yang dipanaskan. Saat air dipanaskan, suhu air akan meningkat. Peristiwa yang terjadi selanjutnya adalah volume air tersebut juga meningkat. Begitu pun sebaliknya, saat air didinginkan volume air tersebut juga menurun. Selain pada air, peristiwa ini pun terjadi pada zat lain, seperti raksa dan alkohol yang digunakan sebagai bahan termometer.</string>
-    <string name="suhu_2_3">a.	Skala Celcius \n
-Skala ini ditetapkan oleh fisikawan Swedia bernama Andreas Celcius dengan satuan yang digunakan Celcius, dilambangkan dengan C. Skala terendah didasarkan pada titik beku air, yaitu 0˚C dan tertinggu yang merupakan titik didih air yaitu 100˚C. Skala ini sering digunakan dalam kehidupan sehari-hari. \n \n
+	<string name="suhu_1">Suhu adalah besaran yang menyatakan ukuran derajat panas atau dinginnya
+		suatu benda. Alat yang digunakan untuk mengukur suhu disebut termometer.
+	</string>
+	<string name="suhu_2">Termometer biasanya berupa sebuah pipa kaca sempit tertutup yang berisi
+		zat cair dan memiliki skala. Prinsip kerja termometer ada pada pengaruh perubahan suhu
+		terhadap perubahan volumenya. Coba perhatikan volume air yang dipanaskan. Saat air
+		dipanaskan, suhu air akan meningkat. Peristiwa yang terjadi selanjutnya adalah volume air
+		tersebut juga meningkat. Begitu pun sebaliknya, saat air didinginkan volume air tersebut
+		juga menurun. Selain pada air, peristiwa ini pun terjadi pada zat lain, seperti raksa dan
+		alkohol yang digunakan sebagai bahan termometer.
+	</string>
+	<string name="suhu_2_3">a. Skala Celcius \n
+		Skala ini ditetapkan oleh fisikawan Swedia bernama Andreas Celcius dengan satuan yang
+		digunakan Celcius, dilambangkan dengan C. Skala terendah didasarkan pada titik beku air,
+		yaitu 0˚C dan tertinggu yang merupakan titik didih air yaitu 100˚C. Skala ini sering
+		digunakan dalam kehidupan sehari-hari. \n \n
 
-b.	Skala Fahrenheit \n
-Ditetapkan oleh seorang fisikawan berkebangsaan Jerman, yaitu Gabriel Daniel Fahrenheit. Satuannya adalah Fahrenheit, dilambangkan F. Titik beku air skala fahrenheit adalah pada suhu 32˚F dan titik didihnya 212˚F . Skala ini banyak digunakan oleh negara-negara di benua Amerika dan Eropa. \n \n
+		b. Skala Fahrenheit \n
+		Ditetapkan oleh seorang fisikawan berkebangsaan Jerman, yaitu Gabriel Daniel Fahrenheit.
+		Satuannya adalah Fahrenheit, dilambangkan F. Titik beku air skala fahrenheit adalah pada
+		suhu 32˚F dan titik didihnya 212˚F . Skala ini banyak digunakan oleh negara-negara di benua
+		Amerika dan Eropa. \n \n
 
-c.	Skala Reamur \n
-Skala terendah dari termometer dengan satuan Reamur ini adalah 0˚R dan skala tertingginya adalah 80˚R. Termometer dengan skala ini merupakan termometer yang jarang digunakan. \n \n
+		c. Skala Reamur \n
+		Skala terendah dari termometer dengan satuan Reamur ini adalah 0˚R dan skala tertingginya
+		adalah 80˚R. Termometer dengan skala ini merupakan termometer yang jarang digunakan. \n \n
 
-d.	Skala Kelvin \n
-Skala ini ditetapkan oleh William Thomas Thompson Kelvin, ilmuwan berkebangsaan Inggris. Berbeda dengan yang lain, skala ini dibuat berdasarkan batasan energi kinetik yang dimilki oleh benda. Berdasarkan teori kinetik partikel, benda berhenti bergerak pada suhu nol mutlak sebesar -273˚C yang kemudian ditetapkan sebagai titik terendah, yaitu 0 K. Sehingga pada skala kelvin titik beku air adalah 273K dan titik didihnya 373K. Skala ini digunakan sebagai sistem Internasional karena kepraktisan penggunaannya dibandingkan dengan skala lain. \n \n
-    </string>
-    <string name="suhu_2_3_4_2">Untuk mengetahui hubungan antara keempat skala di atas, perhatikan tabel berikut :</string>
-    <string name="suhu_2_3_4_3">Hubungan skala Celcius dan skala Kelvin \n
-        t˚C = (t+273)K \n
-        atau \n
-        t K = (t-273)˚C \n \n
+		d. Skala Kelvin \n
+		Skala ini ditetapkan oleh William Thomas Thompson Kelvin, ilmuwan berkebangsaan Inggris.
+		Berbeda dengan yang lain, skala ini dibuat berdasarkan batasan energi kinetik yang dimilki
+		oleh benda. Berdasarkan teori kinetik partikel, benda berhenti bergerak pada suhu nol mutlak
+		sebesar -273˚C yang kemudian ditetapkan sebagai titik terendah, yaitu 0 K. Sehingga pada
+		skala kelvin titik beku air adalah 273K dan titik didihnya 373K. Skala ini digunakan sebagai
+		sistem Internasional karena kepraktisan penggunaannya dibandingkan dengan skala lain. \n \n
+	</string>
+	<string name="suhu_2_3_4_2">Untuk mengetahui hubungan antara keempat skala di atas, perhatikan
+		tabel berikut :
+	</string>
+	<string name="suhu_2_3_4_3">Hubungan skala Celcius dan skala Kelvin \n
+		t˚C = (t+273)K \n
+		atau \n
+		t K = (t-273)˚C \n \n
 
-        Hubungan skala Fahrenheit dan skala Celcius \n
-        (F-32) : C = 9 : 5 \n \n
+		Hubungan skala Fahrenheit dan skala Celcius \n
+		(F-32) : C = 9 : 5 \n \n
 
-        Hubungan skala Reamur dan skala Celcius \n
-        R : C = 4 : 5 \n \n
+		Hubungan skala Reamur dan skala Celcius \n
+		R : C = 4 : 5 \n \n
 
-        Hubungan skala Fahrenheit dan skala Reamur \n
-        (F-32) : R = 9 : \n
-    </string>
+		Hubungan skala Fahrenheit dan skala Reamur \n
+		(F-32) : R = 9 : \n
+	</string>
 
-    <string name="suhu_3_1">Memuai adalah pertambahan panjang, luas, atau volume benda ketika benda tersebut dipanaskan. Pemuaian terjadi karena jarak partikel benda lebih renggang dibandingkan jarak partikel sebelum benda dipanaskan.</string>
-    <string name="suhu_3_2">Koefisien muai panjang adalah bilangan yang menunjukkan besarnya pertambahan panjang tiap satu meter pada suhu 1 K atau 1˚C. Pada suhu dan panjang mula-mula suatu zat berturut-turut adalah T₀ (K atau ˚C) dan L₀ (m), maka panjang benda setelah dipanaskan hingga suhu T (K atau ˚C) adalah Lt (m). Secara matematis dirumuskan:</string>
-    <string name="suhu_3_3">Koefisien muai luas adalah bilangan yang menunjukkan besarnya pertambahan luas tiap satu meter persegi pada suhu 1 K atau 1˚C. Luas benda setelah dipanaskan hingga suhu tertentu dapat dihitung dengan rumus berikut:</string>
-    <string name="suhu_3_4">Koefisien muai volume adalah bilangan yang menunjukkan besarnya pertambahan volume tiap satu meter kubik pada suhu 1 K atau 1˚C. Untuk mengetahui volume benda setelah dipanaskan hingga suhu tertentu, dapat digunakan persamaan:</string>
-    <string name="suhu_4">Konsep pemuaian zat teryata dapat dimanfaatkan dalam kehidupan sehari-hari, antara lain sebagai berikut : \n \n
-1.	Termometer \n
-    Pemuaian zat cair berupa alkohol dan raksa dimanfaatkan sebagai bahan penunjuk suhu pada termometer. \n \n
+	<string name="suhu_3_1">Memuai adalah pertambahan panjang, luas, atau volume benda ketika benda
+		tersebut dipanaskan. Pemuaian terjadi karena jarak partikel benda lebih renggang
+		dibandingkan jarak partikel sebelum benda dipanaskan.
+	</string>
+	<string name="suhu_3_2">Koefisien muai panjang adalah bilangan yang menunjukkan besarnya
+		pertambahan panjang tiap satu meter pada suhu 1 K atau 1˚C. Pada suhu dan panjang mula-mula
+		suatu zat berturut-turut adalah T₀ (K atau ˚C) dan L₀ (m), maka panjang benda setelah
+		dipanaskan hingga suhu T (K atau ˚C) adalah Lt (m). Secara matematis dirumuskan:
+	</string>
+	<string name="suhu_3_3">Koefisien muai luas adalah bilangan yang menunjukkan besarnya
+		pertambahan luas tiap satu meter persegi pada suhu 1 K atau 1˚C. Luas benda setelah
+		dipanaskan hingga suhu tertentu dapat dihitung dengan rumus berikut:
+	</string>
+	<string name="suhu_3_4">Koefisien muai volume adalah bilangan yang menunjukkan besarnya
+		pertambahan volume tiap satu meter kubik pada suhu 1 K atau 1˚C. Untuk mengetahui volume
+		benda setelah dipanaskan hingga suhu tertentu, dapat digunakan persamaan:
+	</string>
+	<string name="suhu_4">Konsep pemuaian zat teryata dapat dimanfaatkan dalam kehidupan
+		sehari-hari, antara lain sebagai berikut : \n \n
+		1. Termometer \n
+		Pemuaian zat cair berupa alkohol dan raksa dimanfaatkan sebagai bahan penunjuk suhu pada
+		termometer. \n \n
 
-2.	Keping Bimetal \n
-    Keping bimetal adalah pengabungan dua jenis batang logam yang memiliki koefisien  muai panjang yang berbeda. Keping ini sangat peka terhadap suhu. Karena koefisien muai dua logam yang digabungkan berbeda, maka ketika dipanaskan keping ini akan melengkung ke arah logam yang koefisien muai panjangnya lebih kecil. Sebaliknya, ketika didinginkan, lengkungannya akan mengarah pada logam yang koefisien muai panjangnya lebih besar.
-Keping bimetal digunakan pada lampu sein mobil atau motor, termometer bimetal, termostat bimetal (alat pengukur suhu yang berfungsi sebagai sakelar otomatis pada alat-alat rumah tangga, seperti setrika listrik, oven listrik, lemari es, pemanas) dan saklar termal untuk alarm kebakaran. \n \n
+		2. Keping Bimetal \n
+		Keping bimetal adalah pengabungan dua jenis batang logam yang memiliki koefisien muai
+		panjang yang berbeda. Keping ini sangat peka terhadap suhu. Karena koefisien muai dua logam
+		yang digabungkan berbeda, maka ketika dipanaskan keping ini akan melengkung ke arah logam
+		yang koefisien muai panjangnya lebih kecil. Sebaliknya, ketika didinginkan, lengkungannya
+		akan mengarah pada logam yang koefisien muai panjangnya lebih besar.
+		Keping bimetal digunakan pada lampu sein mobil atau motor, termometer bimetal, termostat
+		bimetal (alat pengukur suhu yang berfungsi sebagai sakelar otomatis pada alat-alat rumah
+		tangga, seperti setrika listrik, oven listrik, lemari es, pemanas) dan saklar termal untuk
+		alarm kebakaran. \n \n
 
-3.	Pengelingan Pelat Logam \n
-Pengelingan adalah proses penyambungan dua batang logam dengan paku keling. Mula-mula kedua logam yang akan dikeling sudah dilubangi. Bagian lubangnya dipanaskan hingga agak besar dengan tujuan agar paku keling mudah masuk. Setelah paku masuk, pemanasan dihentikan dan paku ditempa agar setelah suhu dingin lubang logam akan menyusut dan mengikat erat paku keling. \n \n
+		3. Pengelingan Pelat Logam \n
+		Pengelingan adalah proses penyambungan dua batang logam dengan paku keling. Mula-mula kedua
+		logam yang akan dikeling sudah dilubangi. Bagian lubangnya dipanaskan hingga agak besar
+		dengan tujuan agar paku keling mudah masuk. Setelah paku masuk, pemanasan dihentikan dan
+		paku ditempa agar setelah suhu dingin lubang logam akan menyusut dan mengikat erat paku
+		keling. \n \n
 
-4.	Pemasangan Bingkai Besi pada Roda \n
-Dalam hal ini, prinsip pemuaian digunakan untuk mempermudah pemasangan bingkai besi pada roda. Ban baja yang berdiameter lebih kecil dari roda besi dipanaskan hingga memuai dan diameternya membesar. Kemudian, ban baja dipasang pada roda dengan tujuan agar setelah suhu dingin kembali, ban baja akan menyusut dan menempel kuat pada roda.
-</string>
+		4. Pemasangan Bingkai Besi pada Roda \n
+		Dalam hal ini, prinsip pemuaian digunakan untuk mempermudah pemasangan bingkai besi pada
+		roda. Ban baja yang berdiameter lebih kecil dari roda besi dipanaskan hingga memuai dan
+		diameternya membesar. Kemudian, ban baja dipasang pada roda dengan tujuan agar setelah suhu
+		dingin kembali, ban baja akan menyusut dan menempel kuat pada roda.
+	</string>
 
-    <string name="kalor_1">Kalor adalah salah satu bentuk energi yang berpindah dari benda bersuhu tinggi ke benda bersuhu rendah. Karena kalor sangat identik dengan panas, dalam kehidupan sehari-hari kalor sering digunakan untuk mengganti kata panas. Satuan kalor setara dengan satuan energi, yaitu Joule. Satuan ini ditetapkan oleh James Presscott Joule setelah ia melakukan penelitian menggunakan alat yang disebut kalorimeter. Satuan kalor dalam SI dinyatakan dalam Joule (J).</string>
-    <string name="kalor_2">Pengaruh kalor terhadap benda adalah dapat mengubah suhu dan mengubah wujud zat. Pada zat berubah suhu, wujud zatnya akan tetap. Sebaliknya, pada saat perubahan wujud, suhunya akan tetap.</string>
-    <string name="kalor_2_1">1.	Kalor dapat mengubah suhu \n
-Banyaknya kalor untuk mengubah suhu benda dirumuskan :
-</string>
-    <string name="kalor_2_2">2.	Kalor dapat mengubah wujud \n
-Perubahan wujud zat ada yang memerlukan kalor dan ada yang melepaskan kalor. \n \n
-Perubahan wujud yang memerlukan kalor : \n \n
-a.	Melebur		: perubahan wujud dari padat menjadi cair. \n
-b.	Menguap		: perubahan wujud dari cair menjadi gas. \n
-c.	Menyublim 	: perubahan dari wujud padat menjadi gas. \n \n
-Perubahan wujud yang melepaskan kalor : \n
-a.	Membeku		: perubahan wujud dari cair menjadi padat. \n
-b.	Mengembun	: perubahan wujud dari gas menjadi cair. \n
-c.	Mendeposisi	: perubahan wujud dari gas menjadi padat.
-</string>
-    <string name="kalor_3">Kapasitas kalor didefinisikan sebagai banyaknya kalor yang diperlukan untuk menaikkan suhu sebesar 1˚C atau 1 K. </string>
-    <string name="kalor_4_1">Konduksi adalah perpindahan kalor melalui zat tanpa disertai perpindahan partikel-partikelnya. Konduktor dapat terjadi pada zat padat. \n \n
-Contoh : ketika kita memanaskan salah satu ujung batang logam. Jika kita memegang ujung yang lain dari batang logam itu, maka kita akan merasakan panas juga.
-</string>
-    <string name="kalor_4_2">Konveksi adalah perpindahan kalor melalui zat perantara tanpa disertai perpindahan partikel-partikelnya. Konveksi terjadi karena perbedaan massa jenis zat. Konveksi terjadi pada zat cair dan zat gas. \n \n
-Contoh : ketika kita mendidihkan air. Air yang dididihkan akan memanas, lalu memuai sehingga massa jenisnya berkurang. Akibatnya, air bergerak naik dan tempatnya digantikan oleh air yang bersuhu rendah yang bergerak turun karena massa jenisnya lebih besar.
-</string>
-    <string name="kalor_4_3">Radiasi adalah perambatan kalor tanpa zat perantara. \n \n
-Contoh : ketika kita berjalan pada siang hari di bawah terik matahari, kita akan merasakan panas.
-</string>
-    <string name="kalor_5">Konsep kalor dapat ditemukan dalam kehidupan sehari-hari, misalnya : \n \n
-1.	Warna permukaan benda menentukan kalor yang diterima \n
-Warna hitam menyerap kalor lebih baik daripada warna putih. Warna putih mengkilap memantulkan panas. \n \n
-2.	Termos \n
-Termos digunakan untuk menyimpan air panas agar tahan lama dengan prinsip perpindahan kalor. \n \n
-3.	Termoskop \n
-Termoskop adalah alat yang digunakan untuk mengetahui adanya pancaran kalor. \n
-</string>
+	<string name="kalor_1">Kalor adalah salah satu bentuk energi yang berpindah dari benda bersuhu
+		tinggi ke benda bersuhu rendah. Karena kalor sangat identik dengan panas, dalam kehidupan
+		sehari-hari kalor sering digunakan untuk mengganti kata panas. Satuan kalor setara dengan
+		satuan energi, yaitu Joule. Satuan ini ditetapkan oleh James Presscott Joule setelah ia
+		melakukan penelitian menggunakan alat yang disebut kalorimeter. Satuan kalor dalam SI
+		dinyatakan dalam Joule (J).
+	</string>
+	<string name="kalor_2">Pengaruh kalor terhadap benda adalah dapat mengubah suhu dan mengubah
+		wujud zat. Pada zat berubah suhu, wujud zatnya akan tetap. Sebaliknya, pada saat perubahan
+		wujud, suhunya akan tetap.
+	</string>
+	<string name="kalor_2_1">1. Kalor dapat mengubah suhu \n
+		Banyaknya kalor untuk mengubah suhu benda dirumuskan :
+	</string>
+	<string name="kalor_2_2">2. Kalor dapat mengubah wujud \n
+		Perubahan wujud zat ada yang memerlukan kalor dan ada yang melepaskan kalor. \n \n
+		Perubahan wujud yang memerlukan kalor : \n \n
+		a. Melebur : perubahan wujud dari padat menjadi cair. \n
+		b. Menguap : perubahan wujud dari cair menjadi gas. \n
+		c. Menyublim : perubahan dari wujud padat menjadi gas. \n \n
+		Perubahan wujud yang melepaskan kalor : \n
+		a. Membeku : perubahan wujud dari cair menjadi padat. \n
+		b. Mengembun : perubahan wujud dari gas menjadi cair. \n
+		c. Mendeposisi : perubahan wujud dari gas menjadi padat.
+	</string>
+	<string name="kalor_3">Kapasitas kalor didefinisikan sebagai banyaknya kalor yang diperlukan
+		untuk menaikkan suhu sebesar 1˚C atau 1 K.
+	</string>
+	<string name="kalor_4_1">Konduksi adalah perpindahan kalor melalui zat tanpa disertai
+		perpindahan partikel-partikelnya. Konduktor dapat terjadi pada zat padat. \n \n
+		Contoh : ketika kita memanaskan salah satu ujung batang logam. Jika kita memegang ujung yang
+		lain dari batang logam itu, maka kita akan merasakan panas juga.
+	</string>
+	<string name="kalor_4_2">Konveksi adalah perpindahan kalor melalui zat perantara tanpa disertai
+		perpindahan partikel-partikelnya. Konveksi terjadi karena perbedaan massa jenis zat.
+		Konveksi terjadi pada zat cair dan zat gas. \n \n
+		Contoh : ketika kita mendidihkan air. Air yang dididihkan akan memanas, lalu memuai sehingga
+		massa jenisnya berkurang. Akibatnya, air bergerak naik dan tempatnya digantikan oleh air
+		yang bersuhu rendah yang bergerak turun karena massa jenisnya lebih besar.
+	</string>
+	<string name="kalor_4_3">Radiasi adalah perambatan kalor tanpa zat perantara. \n \n
+		Contoh : ketika kita berjalan pada siang hari di bawah terik matahari, kita akan merasakan
+		panas.
+	</string>
+	<string name="kalor_5">Konsep kalor dapat ditemukan dalam kehidupan sehari-hari, misalnya : \n
+		\n
+		1. Warna permukaan benda menentukan kalor yang diterima \n
+		Warna hitam menyerap kalor lebih baik daripada warna putih. Warna putih mengkilap
+		memantulkan panas. \n \n
+		2. Termos \n
+		Termos digunakan untuk menyimpan air panas agar tahan lama dengan prinsip perpindahan kalor.
+		\n \n
+		3. Termoskop \n
+		Termoskop adalah alat yang digunakan untuk mengetahui adanya pancaran kalor. \n
+	</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_materi">MateriActivity</string>
+	<string name="action_settings">Settings</string>
+	<string name="title_activity_materi">MateriActivity</string>
 </resources>

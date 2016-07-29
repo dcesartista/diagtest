@@ -69,16 +69,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <RadioButton
+                    android:layout_marginBottom="16dp"
                     android:id="@+id/rbOpsiA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="A."/>
+                    android:text=""/>
                 <RadioButton
+                    android:layout_marginBottom="16dp"
                     android:id="@+id/rbOpsiB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="B."/>
                 <RadioButton
+                    android:layout_marginBottom="16dp"
                     android:id="@+id/rbOpsiC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -107,16 +110,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <RadioButton
+                    android:layout_marginBottom="16dp"
                     android:id="@+id/rbReasonA"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="I."/>
                 <RadioButton
+                    android:layout_marginBottom="16dp"
                     android:id="@+id/rbReasonB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="II."/>
                 <RadioButton
+                    android:layout_marginBottom="16dp"
                     android:id="@+id/rbReasonC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

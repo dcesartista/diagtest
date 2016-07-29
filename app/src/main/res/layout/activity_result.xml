@@ -76,13 +76,14 @@
                 android:layout_marginRight="16dp"
                 android:background="@color/colorPrimary"/>
 
+
             <TextView
-                android:id="@+id/tvKompetensi1"
+                android:id="@+id/tvKompetensi4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Memahami kalor, perubahan suhu serta perpindahan kalor dan akibatnya : 100%"
+                android:text="Mengetahui definisi suhu dan termometer : 100%"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:textSize="16sp"
@@ -110,16 +111,18 @@
                 android:textSize="16sp"
                 android:textColor="@android:color/white"/>
             <TextView
-                android:id="@+id/tvKompetensi4"
+                android:id="@+id/tvKompetensi1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Mengetahui definisi suhu dan thermometer : 100%"
+                android:text="Memahami kalor, perubahan suhu serta perpindahan kalor dan akibatnya : 100%"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:textSize="16sp"
                 android:textColor="@android:color/white"/>
+
+
 
             <Button
                 android:id="@+id/ok_btn"

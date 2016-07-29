@@ -16,6 +16,7 @@ public interface Template {
         String PASSWORD = "password";
 
         String LOGIN = "login";
+        String HISTORY = "history";
         String SIGNUP = "signUp";
         String JAWABAN = "jawaban";
         String SOAL = "soal";

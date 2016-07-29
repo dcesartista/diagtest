@@ -37,6 +37,7 @@ public class JSONParser {
         {
             response = jsonObject.getString("response");
             mResponse = response.toString();
+
             //array = jsonObject.getJSONArray("login");
             if (mResponse.equals("login")) {
                 array = jsonObject.getJSONArray("login");
@@ -168,6 +169,10 @@ public class JSONParser {
                 String message = jsonObject.getString("message");
                 Toast.makeText(context,message,Toast.LENGTH_LONG).show();
                 return false;
+            }
+
+            else{
+                return true;
             }
 
             //Toast.makeText(mContext, nisn.toString(), Toast.LENGTH_SHORT).show();

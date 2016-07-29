@@ -12,8 +12,43 @@
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
     </ListView>
+
+
+    <RelativeLayout
+	    android:id="@+id/timeout_view"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+        android:visibility="gone">
+	    <View
+		    android:id="@+id/ic_timeout"
+		    android:layout_width="60dp"
+		    android:layout_height="60dp"
+	        android:layout_centerInParent="true"
+	        android:background="@drawable/ic_time_up"/>
+	    <TextView
+		    android:layout_width="300dp"
+		    android:layout_height="wrap_content"
+		    android:gravity="center"
+		    android:layout_marginTop="8dp"
+		    android:layout_centerHorizontal="true"
+		    android:textSize="16sp"
+		    android:layout_below="@id/ic_timeout"
+	        android:text="Waktu anda sudah habis, silahkan submit jawaban anda"/>
+	    <TextView
+		    xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:id="@+id/tvSubmit2"
+		    android:layout_width="match_parent"
+		    android:layout_height="80dp"
+		    android:layout_alignParentBottom="true"
+		    android:text="SUBMIT"
+		    android:textColor="@android:color/white"
+		    android:gravity="center"
+		    android:textSize="24sp"
+		    android:padding="16dp"
+		    android:layout_gravity="bottom"
+		    android:background="@drawable/rectangle"/>
+    </RelativeLayout>
 
 </LinearLayout>

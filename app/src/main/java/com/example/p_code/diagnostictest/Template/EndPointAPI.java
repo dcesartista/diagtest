@@ -8,4 +8,5 @@ public interface EndPointAPI {
     String DIAGTEST =  "http://diagtest.net/api/index.php";
     String DIAGTEST_SOAL = "http://diagtest.net/soal/soal.php";
     String DIAGTEST_SUBMIT = "http://diagtest.net/soal/";
+    String DIAGTEST_HISTORY = "http://diagtest.net/history";
 }

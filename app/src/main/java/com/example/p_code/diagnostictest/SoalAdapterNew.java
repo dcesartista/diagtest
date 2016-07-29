@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -67,7 +66,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
         answers = new int[100];
         reasons = new int[100];
 
-        new CountDownTimer(4800000, 1000){
+        /*new CountDownTimer(4800000, 1000){
             @Override
             public void onTick(long millisUntilFinished) {
                 UjianActivity2.setTimeRemaining(millisUntilFinished/1000);
@@ -87,7 +86,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
             public void onFinish() {
                 submitTest(true);
             }
-        }.start();
+        }.start();*/
 
         jumlahBenarKompetensi1 = 0;
         jumlahBenarKompetensi2 = 0;
@@ -138,8 +137,8 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
 
     @Override
     public void onFailed(VolleyError errorListener) {
-        if (progressDialog.isShowing()){
-            progressDialog.dismiss();
+         if (progressDialog.isShowing()){
+                progressDialog.dismiss();
         }
         Toast.makeText(context,"Gagal mengirimkan jawaban anda, harap periksa koneksi internet!!",Toast.LENGTH_LONG).show();
     }
@@ -204,7 +203,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
                 RadioButton alasan = (RadioButton) soalHolder.reasons.getChildAt(i);
                 if (null != mSoal.getGambarRsn()[soalPosition][i]){
                     Log.v("WAAHAHA", "HAHAHA");
-                    alasan.setCompoundDrawablesWithIntrinsicBounds(mSoal.getGambarRsn()[soalPosition][i], null, null, null);
+                    alasan.setCompoundDrawablesWithIntrinsicBounds(null, null, mSoal.getGambarRsn()[soalPosition][i], null);
                     alasan.setText("");
                 }
                 else {
@@ -317,7 +316,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
         Log.v("JUMLAH TOTAL", ""+(jumlahSoal*2));
 
         score = (jumlahBenar/(jumlahSoal*2))*100;
-        if(score >= 80){
+        if(score >= 70){
             isLulus = true;
         } else {
             isLulus = false;

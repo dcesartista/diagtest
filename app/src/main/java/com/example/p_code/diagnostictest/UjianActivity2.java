@@ -2,8 +2,10 @@ package com.example.p_code.diagnostictest;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.example.p_code.diagnostictest.Interface.VolleyInterface;
 import com.example.p_code.diagnostictest.Template.EndPointAPI;
+import com.example.p_code.diagnostictest.Template.Template;
 import com.example.p_code.diagnostictest.Utils.Data;
 import com.example.p_code.diagnostictest.Utils.JSONParser;
 import com.example.p_code.diagnostictest.Utils.VolleyRequest;
@@ -39,6 +42,15 @@ public class UjianActivity2 extends AppCompatActivity
     public static final String TAG = UjianActivity2.class.getSimpleName();
     private ListView mListView;
     private SoalAdapterNew mAdapter;
+    private float score;
+    private float jumlahBenar;
+    View timeout;
+    ProgressDialog progressDialog;
+    String theScore;
+    String formatKirimJawaban;
+    float jumlahBenarKompetensi1, jumlahBenarKompetensi2,
+            jumlahBenarKompetensi3, jumlahBenarKompetensi4;
+    private boolean isLulus;
 
     public static String[] getAnswerKey() {
         return answerKey;
@@ -62,6 +74,7 @@ public class UjianActivity2 extends AppCompatActivity
     private static String[] answerKey;
     ProgressDialog fetchingSoal;
     VolleyRequest requestSoal;
+    VolleyRequest submitAnswer;
     JSONParser mJSONParser;
     com.example.p_code.diagnostictest.Utils.Soal soalsoal;
     static int jumlahSoal;
@@ -90,8 +103,16 @@ public class UjianActivity2 extends AppCompatActivity
 
         TextView nama = (TextView) headerView.findViewById(R.id.tvNamaNav);
         TextView nisn = (TextView) headerView.findViewById(R.id.tvNISNNav);
+        TextView submitbtn = (TextView) findViewById(R.id.tvSubmit2);
+        timeout = findViewById(R.id.timeout_view);
         nama.setText(Data.nama);
         nisn.setText(Data.nisn);
+        submitbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitTest(false);
+            }
+        });
 
         imageMap.put("gb01", getResources().getDrawable(R.drawable.gambar_gelas));
         imageMap.put("gb02",getResources().getDrawable(R.drawable.gambar_bimetal));
@@ -108,7 +129,9 @@ public class UjianActivity2 extends AppCompatActivity
         imageMap.put("rsn09_2",getResources().getDrawable(R.drawable.opsi9_2));
         imageMap.put("rsn09_3",getResources().getDrawable(R.drawable.opsi9_3));
         imageMap.put("rsn09_4",getResources().getDrawable(R.drawable.opsi9_4));
+        imageMap.put("rsn10_1",getResources().getDrawable(R.drawable.opsi10_1));
         imageMap.put("rsn10_2",getResources().getDrawable(R.drawable.opsi10_2));
+        imageMap.put("rsn10_3",getResources().getDrawable(R.drawable.opsi10_3));
         imageMap.put("rsn10_4",getResources().getDrawable(R.drawable.opsi10_4));
         imageMap.put("rsn12_1",getResources().getDrawable(R.drawable.opsi12_1));
         imageMap.put("rsn12_2",getResources().getDrawable(R.drawable.opsi12_2));
@@ -116,7 +139,43 @@ public class UjianActivity2 extends AppCompatActivity
         imageMap.put("rsn12_4",getResources().getDrawable(R.drawable.opsi12_4));
 
         fetchingSoal = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
         requestSoal = new VolleyRequest(this);
+        submitAnswer = new VolleyRequest(new VolleyInterface() {
+            @Override
+            public void onPrepare() {
+                progressDialog.isIndeterminate();
+                progressDialog.setMessage("Mengirim Jawaban...");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setCancelable(false);
+                if (!progressDialog.isShowing()){
+                    progressDialog.show();
+                }
+            }
+
+            @Override
+            public void onSuccess(JSONObject jsonObject) {
+                if (progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
+                Intent intent = new Intent(UjianActivity2.this, ResultActivity.class);
+                Log.v("Score ", theScore);
+                intent.putExtra(SoalAdapterNew.EXTRA_SCORE, theScore);
+                intent.putExtra(SoalAdapterNew.EXTRA_LULUS, isLulus);
+                SoalAdapterNew.answers = null;
+                SoalAdapterNew.reasons = null;
+                UjianActivity2.this.startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailed(VolleyError errorListener) {
+                if (progressDialog.isShowing()){
+                    progressDialog.dismiss();
+                }
+                Toast.makeText(UjianActivity2.this,"Gagal mengirimkan jawaban anda, harap periksa koneksi internet!!",Toast.LENGTH_LONG).show();
+            }
+        });
         mJSONParser = new JSONParser(this);
 
         fetchSoal();
@@ -361,7 +420,18 @@ public class UjianActivity2 extends AppCompatActivity
 
         mAdapter = new SoalAdapterNew(this, soalsoal, this);
         mListView.setAdapter(mAdapter);
+        new CountDownTimer(3600000,300000){
+            @Override
+            public void onTick(long millisUntilFinished) {
+                Toast.makeText(UjianActivity2.this,"Waktu anda tinggal "+(millisUntilFinished/60000)+" menit lagi",Toast.LENGTH_LONG).show();
+            }
 
+            @Override
+            public void onFinish() {
+                mListView.setVisibility(View.GONE);
+                timeout.setVisibility(View.VISIBLE);
+            }
+        }.start();
     }
 
     @Override
@@ -387,6 +457,96 @@ public class UjianActivity2 extends AppCompatActivity
 
     public static Map<String, Drawable> getImageMap(){
         return imageMap;
+    }
+
+    private void submitTest(boolean timeOut){
+        jumlahBenar = 0;
+        score = 0;
+        formatKirimJawaban = "";
+        for (int i = 0; i < jumlahSoal; i++) {
+            formatKirimJawaban = formatKirimJawaban.concat(soalsoal.getIdSoal()[i]+"_"+UjianActivity2.changeAnswerIdtoLetter(SoalAdapterNew.answers[i]).toLowerCase()+
+                                                           "."+UjianActivity2.changeReasonIdtoLetter(SoalAdapterNew.reasons[i])+"#");
+            Log.v("jawaban", UjianActivity2.changeAnswerIdtoLetter(SoalAdapterNew.answers[i]));
+            Log.v("kunci", ""+UjianActivity2.getAnswerKey()[i]);
+            Log.v("alasan",UjianActivity2.changeReasonIdtoLetter(SoalAdapterNew.reasons[i]));
+            Log.v("kunci alasan", UjianActivity2.changeReasonIdtoLetter(UjianActivity2.getReasonKey()[i]));
+
+            if (UjianActivity2.changeAnswerIdtoLetter(SoalAdapterNew.answers[i]).equals(UjianActivity2.getAnswerKey()[i])) {
+                if (soalsoal.getKompetensi()[i].equals("Memahami dan menjelaskan peristiwa pemuaian")){
+                    jumlahBenarKompetensi1+=1;
+                } else if (soalsoal.getKompetensi()[i].equals("Memahami skala suhu pada termometer")){
+                    jumlahBenarKompetensi2+=1;
+                } else if (soalsoal.getKompetensi()[i].equals("Mengetahui definisi suhu dan thermometer")){
+                    jumlahBenarKompetensi3+=1;
+                } else if (soalsoal.getKompetensi()[i].equals("Memahami kalor, perubahan suhu serta perpindahan kalor dan akibatnya")){
+                    jumlahBenarKompetensi4+=1;
+                }
+                jumlahBenar+=1;
+            }
+            if (UjianActivity2.changeReasonIdtoLetter(SoalAdapterNew.reasons[i]).equals(UjianActivity2.changeReasonIdtoLetter(UjianActivity2.getReasonKey()[i]))) {
+                if (soalsoal.getKompetensi()[i].equals(Data.kompetensi1)){
+                    jumlahBenarKompetensi1+=1;
+                } else if (soalsoal.getKompetensi()[i].equals(Data.kompetensi2)){
+                    jumlahBenarKompetensi2+=1;
+                } else if (soalsoal.getKompetensi()[i].equals(Data.kompetensi3)){
+                    jumlahBenarKompetensi3+=1;
+                } else if (soalsoal.getKompetensi()[i].equals(Data.kompetensi4)){
+                    jumlahBenarKompetensi4+=1;
+                }
+                jumlahBenar+=1;
+            }
+        }
+
+        Data.pemahamanKompetensi1 = (jumlahBenarKompetensi1/(Data.jumlahKompetensi1*2)) * 100;
+        Data.pemahamanKompetensi2 = (jumlahBenarKompetensi2/(Data.jumlahKompetensi2*2)) * 100;
+        Data.pemahamanKompetensi3 = (jumlahBenarKompetensi3/(Data.jumlahKompetensi3*2)) * 100;
+        Data.pemahamanKompetensi4 = (jumlahBenarKompetensi4/(Data.jumlahKompetensi4*2)) * 100;
+
+        Log.v("ASDASDASDAS","AHDAHSDAHS");
+        Log.v("formatted answer",formatKirimJawaban);
+        Log.v("JUMLAH BENAR", ""+jumlahBenar);
+        Log.v("JUMLAH TOTAL", ""+(jumlahSoal*2));
+
+        score = (jumlahBenar/(jumlahSoal*2))*100;
+        if(score >= 70){
+            isLulus = true;
+        } else {
+            isLulus = false;
+        }
+
+        if(score>100)
+            score = 100;
+        theScore = String.format("%.2f", score);
+        Log.v("Score ", String.valueOf(score));
+
+        if(timeOut){
+            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+            Log.v("FORMATTED FIX", formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+        } else {
+            new AlertDialog.Builder(this)
+                    .setMessage("Apakah anda yakin? \n Pastikan anda mengecek jawaban anda sebelum melakukan submit" )
+                    .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+                            Log.v("FORMATTED FIX", formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+                        }})
+                    .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            score=0;
+                        }
+                    }).show();
+        }
+
+    }
+
+    private void sendAnswer(String formattedAnswer){
+        Map<String,String> map = new HashMap<>();
+        map.put(Template.Query.TAG, Template.Query.JAWABAN);
+        map.put(Template.Query.NISN, Data.nisn);
+        map.put(Template.Query.ANSWER, formattedAnswer);
+        submitAnswer.sendPostRequest(EndPointAPI.DIAGTEST_SUBMIT,map);
     }
 
 }

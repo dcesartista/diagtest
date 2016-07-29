@@ -26,10 +26,10 @@
         <ImageView
             android:layout_marginTop="25dp"
             android:layout_marginBottom="30dp"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_unnes_notext">
+            android:src="@drawable/logo">
         </ImageView>
 
         <LinearLayout
