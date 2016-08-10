@@ -520,7 +520,7 @@ public class UjianActivity2 extends AppCompatActivity
         Log.v("Score ", String.valueOf(score));
 
         if(timeOut){
-            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1),jumlahBenar,score);
             Log.v("FORMATTED FIX", formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
         } else {
             new AlertDialog.Builder(this)
@@ -528,7 +528,7 @@ public class UjianActivity2 extends AppCompatActivity
                     .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+                            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1),jumlahBenar,score);
                             Log.v("FORMATTED FIX", formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
                         }})
                     .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -541,12 +541,17 @@ public class UjianActivity2 extends AppCompatActivity
 
     }
 
-    private void sendAnswer(String formattedAnswer){
+    private void sendAnswer(String formattedAnswer, float jmlbnr, float score ){
         Map<String,String> map = new HashMap<>();
         map.put(Template.Query.TAG, Template.Query.JAWABAN);
+        //map.put("input",Data.nisn + " " + formattedAnswer + " " + jmlbnr + " " + score);
         map.put(Template.Query.NISN, Data.nisn);
         map.put(Template.Query.ANSWER, formattedAnswer);
+        /*map.put("score", String.valueOf(jmlbnr));
+        map.put("mark", String.valueOf(score));*/
         submitAnswer.sendPostRequest(EndPointAPI.DIAGTEST_SUBMIT,map);
     }
+
+
 
 }

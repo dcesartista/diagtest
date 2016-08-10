@@ -165,14 +165,20 @@ public class JSONParser {
                 }
                 return true;
             }
+            else if(response.equals("history")){
+                Log.v("AHAHAHA","POPOPOPOPO");
+                array = jsonObject.getJSONArray("history");
+                for (int i = 0;i <array.length();i++){
+                    Data.timeHistory[i] = array.getJSONObject(i).getString("time");
+                    Data.markHistory[i] = array.getJSONObject(i).getString("mark");
+                    Log.v("WOOOYY!!!!",Data.timeHistory[i] + " +++ " + Data.markHistory[i]);
+                }
+                return true;
+            }
             else if (response.equals("error")){
                 String message = jsonObject.getString("message");
                 Toast.makeText(context,message,Toast.LENGTH_LONG).show();
                 return false;
-            }
-
-            else{
-                return true;
             }
 
             //Toast.makeText(mContext, nisn.toString(), Toast.LENGTH_SHORT).show();

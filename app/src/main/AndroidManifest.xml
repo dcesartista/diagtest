@@ -51,7 +51,11 @@
 			android:screenOrientation="portrait"
 			android:theme="@style/AppTheme.NoActionBar">
 		</activity>
-		<activity android:name=".HistoryActivity">
+		<activity
+			android:name=".HistoryActivity"
+			android:label="History"
+			android:screenOrientation="portrait"
+			android:theme="@style/AppTheme.NoActionBar">
 		</activity>
 	</application>
 

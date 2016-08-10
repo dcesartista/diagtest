@@ -20,6 +20,8 @@ public class Data extends Application {
     public static float pemahamanKompetensi2;
     public static float pemahamanKompetensi3;
     public static float pemahamanKompetensi4;
+    public static String[] timeHistory = new String[3];
+    public static String[] markHistory = new String[3];
 
 
     public static String notification;

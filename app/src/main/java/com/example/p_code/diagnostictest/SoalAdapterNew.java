@@ -141,6 +141,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
                 progressDialog.dismiss();
         }
         Toast.makeText(context,"Gagal mengirimkan jawaban anda, harap periksa koneksi internet!!",Toast.LENGTH_LONG).show();
+        Log.v("ERROR BOSQUE", String.valueOf(errorListener));
     }
 
     public static class SoalHolder {
@@ -328,7 +329,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
         Log.v("Score ", String.valueOf(score));
 
         if(timeOut){
-            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1), jumlahBenar, score);
             Log.v("FORMATTED FIX", formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
         } else {
             new AlertDialog.Builder(context)
@@ -336,7 +337,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
                     .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
+                            sendAnswer(formatKirimJawaban.substring(0,formatKirimJawaban.length()-1), jumlahBenar, score);
                             Log.v("FORMATTED FIX", formatKirimJawaban.substring(0,formatKirimJawaban.length()-1));
                         }})
                     .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -349,11 +350,14 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
 
     }
 
-    private void sendAnswer(String formattedAnswer){
+    private void sendAnswer(String formattedAnswer, float jmlbenar, float score){
         Map<String,String> map = new HashMap<>();
         map.put(Template.Query.TAG, Template.Query.JAWABAN);
+        //map.put("input",Data.nisn + " " + formattedAnswer + " " + jmlbenar + " " + score);
         map.put(Template.Query.NISN, Data.nisn);
         map.put(Template.Query.ANSWER, formattedAnswer);
+        /*map.put("score", String.valueOf(jmlbenar));
+        map.put("mark", String.valueOf(score));*/
         mRequest.sendPostRequest(EndPointAPI.DIAGTEST_SUBMIT,map);
     }
 

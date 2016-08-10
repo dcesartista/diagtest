@@ -1,27 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	tools:context="com.example.p_code.diagnostictest.PetunjukActivity">
+
+<android.support.design.widget.AppBarLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:background="@color/colorAccent"
+		app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"/>
+
+</android.support.design.widget.AppBarLayout>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:card_view="http://schemas.android.com/apk/res-auto"
+	android:layout_marginTop="60dp"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context="com.example.p_code.diagnostictest.HistoryActivity">
+	android:id="@+id/scrollView1">
+
 	<LinearLayout android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1"
-		android:orientation="horizontal">
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_marginTop="16dp">
+
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+
+			<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:background="@drawable/outline"
+			android:text="Tanggal"/>
+
+			<TextView android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/outline"
+				android:text="Jam"/>
+
+			<TextView android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/outline"
+				android:text="Nilai"/>
+
+		</LinearLayout>
+
+			<!--<TextView
+				android:id="@+id/noHis1"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center"
+				android:text="TIDAK ADA DATA HISTORY"
+				android:textSize="16sp"/>-->
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:id="@+id/linLayC1">
+				<TextView
+					android:id="@+id/date1"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:background="@drawable/outline"
+					android:layout_height="wrap_content"
+					android:text="17-08-1945"
+					android:textStyle="bold"/>
+
+				<TextView
+					android:id="@+id/time1"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:background="@drawable/outline"
+					android:layout_height="wrap_content"
+					android:text="19:41"
+					android:textStyle="bold"/>
+				<TextView
+					android:id="@+id/mark1"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:background="@drawable/outline"
+					android:layout_height="wrap_content"
+					android:text="100"
+					android:textStyle="bold"/>
+			</LinearLayout>
+
+			<!--<TextView
+				android:id="@+id/noHis2"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center"
+				android:text="TIDAK ADA DATA HISTORY"
+				android:textSize="16sp"/>-->
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:id="@+id/linLayC2">
+			<TextView
+				android:id="@+id/date2"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:background="@drawable/outline"
+				android:layout_height="wrap_content"
+				android:text="17-08-1945"
+				android:textStyle="bold"/>
+
+			<TextView
+				android:id="@+id/time2"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:background="@drawable/outline"
+				android:layout_height="wrap_content"
+				android:text="19:41"
+				android:textStyle="bold"
+			/>
+			<TextView
+				android:id="@+id/mark2"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:background="@drawable/outline"
+				android:layout_height="wrap_content"
+				android:text="100"
+				android:textStyle="bold"/>
+		</LinearLayout>
+
+
+			<!--<TextView
+				android:id="@+id/noHis3"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center"
+				android:text="TIDAK ADA DATA HISTORY"
+				android:textSize="16sp"/>-->
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:id="@+id/linLayC3">
+			<TextView
+				android:id="@+id/date3"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:background="@drawable/outline"
+				android:layout_height="wrap_content"
+				android:text="17-08-1945"
+				android:textStyle="bold"/>
+
+			<TextView
+				android:id="@+id/time3"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:background="@drawable/outline"
+				android:layout_height="wrap_content"
+				android:text="19:41"
+				android:textStyle="bold"
+			/>
+			<TextView
+				android:id="@+id/mark3"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:background="@drawable/outline"
+				android:layout_height="wrap_content"
+				android:text="100"
+				android:textStyle="bold"/>
+		</LinearLayout>
 
 	</LinearLayout>
-	<LinearLayout android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1"
-		android:orientation="horizontal">
 
-	</LinearLayout>
-	<LinearLayout android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1"
-		android:orientation="horizontal">
 
-	</LinearLayout>
-</LinearLayout>
+
+</ScrollView>
+</android.support.design.widget.CoordinatorLayout>

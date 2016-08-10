@@ -7,6 +7,6 @@ public interface EndPointAPI {
     //String DIAGTEST =  "http://10.42.200.187/diagtest/api/index.php";
     String DIAGTEST =  "http://diagtest.net/api/index.php";
     String DIAGTEST_SOAL = "http://diagtest.net/soal/soal.php";
-    String DIAGTEST_SUBMIT = "http://diagtest.net/soal/";
-    String DIAGTEST_HISTORY = "http://diagtest.net/history";
+    String DIAGTEST_SUBMIT = "http://diagtest.net/soal/index.php";
+    String DIAGTEST_HISTORY = "http://diagtest.net/history/main.php";
 }
