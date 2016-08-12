@@ -14,13 +14,13 @@
             android:textStyle="bold"
             android:textSize="24dp"
             android:text="Termometer"/>
-        <TextView
+        <WebView
+            android:id="@+id/suhu2_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
-            android:text="@string/suhu_2"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -31,16 +31,36 @@
             android:textStyle="bold"
             android:text="1. Jenis-jenis Termometer Menurut Bahannya"/>
         <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="32dp"
+        android:paddingRight="16dp"
+        android:text="a.	Termometer air raksa"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:text="b.	Termometer alkohol"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:text="c.	Termometer Platina"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:text="d.	Termometer Gas"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="32dp"
             android:paddingRight="16dp"
             android:paddingBottom="16dp"
-            android:text="a.	Termometer air raksa
-b.	Termometer alkohol
-c.	Termometer Platina
-d.	Termometer Gas
-e.	Termometer Bimetal"/>
+            android:text="e.	Termometer Bimetal"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -55,10 +75,20 @@ e.	Termometer Bimetal"/>
             android:layout_height="wrap_content"
             android:paddingLeft="32dp"
             android:paddingRight="16dp"
+            android:text="a.	Termometer Klinis"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:text="b.	Termometer Dinding"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
             android:paddingBottom="16dp"
-            android:text="a.	Termometer Klinis
-b.	Termometer Dinding
-c.	Termometer max-min Six Bellani"/>
+            android:text="c.	Termometer max-min Six Bellani"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -73,11 +103,58 @@ c.	Termometer max-min Six Bellani"/>
             android:layout_height="wrap_content"
             android:paddingLeft="32dp"
             android:paddingRight="16dp"
-            android:text="@string/suhu_2_3"/>
+            android:text="@string/suhu_2_3_1"/>
+        <WebView
+            android:id="@+id/suhu2_3_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/suhu_2_3_1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:text="@string/suhu_2_3_2"/>
+        <WebView
+            android:id="@+id/suhu2_3_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/suhu_2_3_1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:text="@string/suhu_2_3_3"/>
+        <WebView
+            android:id="@+id/suhu2_3_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/suhu_2_3_1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:text="@string/suhu_2_3_4"/>
+        <WebView
+            android:id="@+id/suhu2_3_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/suhu_2_3_1"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:paddingLeft="32dp"
             android:paddingRight="16dp"
             android:paddingBottom="16dp"

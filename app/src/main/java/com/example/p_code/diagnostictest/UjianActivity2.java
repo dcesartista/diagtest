@@ -544,9 +544,9 @@ public class UjianActivity2 extends AppCompatActivity
     private void sendAnswer(String formattedAnswer, float jmlbnr, float score ){
         Map<String,String> map = new HashMap<>();
         map.put(Template.Query.TAG, Template.Query.JAWABAN);
-        //map.put("input",Data.nisn + " " + formattedAnswer + " " + jmlbnr + " " + score);
-        map.put(Template.Query.NISN, Data.nisn);
-        map.put(Template.Query.ANSWER, formattedAnswer);
+        map.put("input",Data.nisn + " " + formattedAnswer + " " + jmlbnr + " " + score);
+        /*map.put(Template.Query.NISN, Data.nisn);
+        map.put(Template.Query.ANSWER, formattedAnswer);*/
         /*map.put("score", String.valueOf(jmlbnr));
         map.put("mark", String.valueOf(score));*/
         submitAnswer.sendPostRequest(EndPointAPI.DIAGTEST_SUBMIT,map);

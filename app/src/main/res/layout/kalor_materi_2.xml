@@ -14,12 +14,13 @@
             android:textStyle="bold"
             android:textSize="24dp"
             android:text="Fungsi Kalor"/>
-        <TextView
+        <WebView
+            android:id="@+id/kalor2_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/kalor_2"/>
         <TextView
             android:layout_width="match_parent"
@@ -27,19 +28,162 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:text="@string/kalor_2_1"/>
+        <WebView
+            android:id="@+id/kalor2_1b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/kalor_2"/>
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="60dp"
             android:paddingLeft="32dp"
             android:paddingRight="16dp"
             android:paddingBottom="16dp"
-            android:src="@drawable/kalor2"/>
+            android:src="@drawable/kalor2a"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"
+            android:src="@drawable/kalor2b"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:text="Banyaknya kalor untuk mengubah wujud benda di rumuskan :"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"
+            android:src="@drawable/kalor2c"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"
+            android:src="@drawable/kalor2d"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:text="@string/kalor_2_2"/>
+        <WebView
+            android:id="@+id/kalor2_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/kalor_2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="16dp"
+            android:text="@string/kalor_2_2_2"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="16dp"
+            android:text="@string/kalor_2_2_2_1"/>
+        <WebView
+            android:id="@+id/kalor2_2_2_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/kalor_2"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="16dp"
+            android:text="@string/kalor_2_2_2_2"/>
+        <WebView
+            android:id="@+id/kalor2_2_2_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/kalor_2"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="16dp"
+            android:text="@string/kalor_2_2_2_3"/>
+        <WebView
+            android:id="@+id/kalor2_2_2_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/kalor_2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="16dp"
+            android:text="@string/kalor_2_2_3"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="16dp"
+            android:text="@string/kalor_2_2_3_1"/>
+        <WebView
+            android:id="@+id/kalor2_2_3_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/kalor_2"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="16dp"
+            android:text="@string/kalor_2_2_3_2"/>
+        <WebView
+            android:id="@+id/kalor2_2_3_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/kalor_2"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="16dp"
+            android:text="@string/kalor_2_2_3_3"/>
+        <WebView
+            android:id="@+id/kalor2_2_3_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/kalor_2"/>
 
     </LinearLayout>
 </ScrollView>

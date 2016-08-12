@@ -353,9 +353,9 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
     private void sendAnswer(String formattedAnswer, float jmlbenar, float score){
         Map<String,String> map = new HashMap<>();
         map.put(Template.Query.TAG, Template.Query.JAWABAN);
-        //map.put("input",Data.nisn + " " + formattedAnswer + " " + jmlbenar + " " + score);
-        map.put(Template.Query.NISN, Data.nisn);
-        map.put(Template.Query.ANSWER, formattedAnswer);
+        map.put("input",Data.nisn + " " + formattedAnswer + " " + jmlbenar + " " + score);
+        /*map.put(Template.Query.NISN, Data.nisn);
+        map.put(Template.Query.ANSWER, formattedAnswer);*/
         /*map.put("score", String.valueOf(jmlbenar));
         map.put("mark", String.valueOf(score));*/
         mRequest.sendPostRequest(EndPointAPI.DIAGTEST_SUBMIT,map);

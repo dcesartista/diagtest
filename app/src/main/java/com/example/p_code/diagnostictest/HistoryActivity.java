@@ -81,18 +81,24 @@ public class HistoryActivity extends AppCompatActivity implements VolleyInterfac
                             "-" + Data.timeHistory[0].substring(0,4));
             tvTime1.setText(Data.timeHistory[0].substring(11,16));
             tvMark1.setText(Data.markHistory[0]);
+            lin1.setVisibility(View.VISIBLE);
+            noHis1.setVisibility(View.GONE);
 
             tvDate2.setText(Data.timeHistory[1].substring(8,10) + "-" +
                             Data.timeHistory[1].substring(5,7) +
                             "-" + Data.timeHistory[1].substring(0,4));
             tvTime2.setText(Data.timeHistory[1].substring(11,16));
             tvMark2.setText(Data.markHistory[1]);
+            lin2.setVisibility(View.VISIBLE);
+            noHis2.setVisibility(View.GONE);
 
             tvDate3.setText(Data.timeHistory[2].substring(8,10) + "-" +
                             Data.timeHistory[2].substring(5,7) +
                             "-" + Data.timeHistory[2].substring(0,4));
             tvTime3.setText(Data.timeHistory[2].substring(11,16));
             tvMark3.setText(Data.markHistory[2]);
+            lin3.setVisibility(View.VISIBLE);
+            noHis3.setVisibility(View.GONE);
         }
         else if(null != Data.timeHistory[1]){
             tvDate1.setText(Data.timeHistory[0].substring(8,10) + "-" +
@@ -108,11 +114,13 @@ public class HistoryActivity extends AppCompatActivity implements VolleyInterfac
                             "-" + Data.timeHistory[1].substring(0,4));
             tvTime2.setText(Data.timeHistory[1].substring(11,16));
             tvMark2.setText(Data.markHistory[1]);
+            lin2.setVisibility(View.VISIBLE);
+            noHis2.setVisibility(View.GONE);
 
 
-            tvDate3.setText("-");
+            /*tvDate3.setText("-");
             tvTime3.setText("-");
-            tvMark3.setText("-");
+            tvMark3.setText("-");*/
         }
         else if(null != Data.timeHistory[0]){
             tvDate1.setText(Data.timeHistory[0].substring(8,10) + "-" +
@@ -120,14 +128,16 @@ public class HistoryActivity extends AppCompatActivity implements VolleyInterfac
                             "-" + Data.timeHistory[0].substring(0,4));
             tvTime1.setText(Data.timeHistory[0].substring(11,16));
             tvMark1.setText(Data.markHistory[0]);
+            noHis1.setVisibility(View.GONE);
+            lin1.setVisibility(View.VISIBLE);
 
-            tvDate2.setText("-");
+            /*tvDate2.setText("-");
             tvTime2.setText("-");
             tvMark2.setText("-");
 
             tvDate3.setText("-");
             tvTime3.setText("-");
-            tvMark3.setText("-");
+            tvMark3.setText("-");*/
         }
     }
 

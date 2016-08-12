@@ -19,7 +19,76 @@
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="@string/kalor_5"/>
+            android:layout_marginBottom="16dp"
+            android:text="Konsep kalor dapat ditemukan dalam kehidupan sehari-hari, misalnya :"/>
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        android:orientation="horizontal">
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:text="1."/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp"
+                android:text="Warna permukaan benda menentukan kalor yang diterima"/>
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/kalor5_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"/>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:text="2."/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp"
+                android:text="Termos"/>
+        </LinearLayout>
+        <WebView
+            android:id="@+id/kalor5_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"/>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:text="3."/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp"
+                android:text="Termoskop"/>
+        </LinearLayout>
+        <WebView
+            android:id="@+id/kalor5_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"/>
+
+
 
     </LinearLayout>
 </ScrollView>

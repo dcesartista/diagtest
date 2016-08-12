@@ -18,9 +18,10 @@
 	<string name="navigation_drawer_open">Open navigation drawer</string>
 	<string name="navigation_drawer_close">Close navigation drawer</string>
 
-	<string name="suhu_1">Suhu adalah besaran yang menyatakan ukuran derajat panas atau dinginnya
-		suatu benda. Alat yang digunakan untuk mengukur suhu disebut termometer.
+	<string name="suhu_1"><bold>Suhu</bold> adalah besaran yang menyatakan ukuran derajat panas atau dinginnya
+		suatu benda.<bold>Alat</bold> yang digunakan untuk mengukur suhu disebut <bold>termometer</bold>.
 	</string>
+	<string name="suhu_1b">Contoh termometer untuk mengukur suhu tubuh :</string>
 	<string name="suhu_2">Termometer biasanya berupa sebuah pipa kaca sempit tertutup yang berisi
 		zat cair dan memiliki skala. Prinsip kerja termometer ada pada pengaruh perubahan suhu
 		terhadap perubahan volumenya. Coba perhatikan volume air yang dipanaskan. Saat air
@@ -29,6 +30,27 @@
 		juga menurun. Selain pada air, peristiwa ini pun terjadi pada zat lain, seperti raksa dan
 		alkohol yang digunakan sebagai bahan termometer.
 	</string>
+	<string name="suhu_2_3_1">a. Skala Celcius</string>
+	<string name="suhu_2_3_1b">Skala ini ditetapkan oleh fisikawan Swedia bernama Andreas Celcius dengan satuan yang
+		digunakan Celcius, dilambangkan dengan C. Skala terendah didasarkan pada titik beku air,
+		yaitu 0˚C dan tertinggu yang merupakan titik didih air yaitu 100˚C. Skala ini sering
+		digunakan dalam kehidupan sehari-hari.</string>
+	<string name="suhu_2_3_2">b. Skala Fahrenheit</string>
+	<string name="suhu_2_3_2b">Ditetapkan oleh seorang fisikawan berkebangsaan Jerman, yaitu Gabriel Daniel Fahrenheit.
+		Satuannya adalah Fahrenheit, dilambangkan F. Titik beku air skala fahrenheit adalah pada
+		suhu 32˚F dan titik didihnya 212˚F . Skala ini banyak digunakan oleh negara-negara di benua
+		Amerika dan Eropa.</string>
+	<string name="suhu_2_3_3">c. Skala Reamur</string>
+	<string name="suhu_2_3_3b">Skala terendah dari termometer dengan satuan Reamur ini adalah 0˚R dan skala tertingginya
+		adalah 80˚R. Termometer dengan skala ini merupakan termometer yang jarang digunakan.</string>
+	<string name="suhu_2_3_4">d. Skala Kelvin</string>
+	<string name="suhu_2_3_4b">Skala ini ditetapkan oleh William Thomas Thompson Kelvin, ilmuwan berkebangsaan Inggris.
+		Berbeda dengan yang lain, skala ini dibuat berdasarkan batasan energi kinetik yang dimilki
+		oleh benda. Berdasarkan teori kinetik partikel, benda berhenti bergerak pada suhu nol mutlak
+		sebesar -273˚C yang kemudian ditetapkan sebagai titik terendah, yaitu 0 K. Sehingga pada
+		skala kelvin titik beku air adalah 273K dan titik didihnya 373K. Skala ini digunakan sebagai
+		sistem Internasional karena kepraktisan penggunaannya dibandingkan dengan skala lain.</string>
+
 	<string name="suhu_2_3">a. Skala Celcius \n
 		Skala ini ditetapkan oleh fisikawan Swedia bernama Andreas Celcius dengan satuan yang
 		digunakan Celcius, dilambangkan dengan C. Skala terendah didasarkan pada titik beku air,
@@ -88,6 +110,34 @@
 		pertambahan volume tiap satu meter kubik pada suhu 1 K atau 1˚C. Untuk mengetahui volume
 		benda setelah dipanaskan hingga suhu tertentu, dapat digunakan persamaan:
 	</string>
+
+	<string name="suhu_4_1">Konsep pemuaian zat teryata dapat dimanfaatkan dalam kehidupan
+		sehari-hari, antara lain sebagai berikut :</string>
+	<string name="suhu_4_2">1. Termometer</string>
+	<string name="suhu_4_2b">Pemuaian zat cair berupa alkohol dan raksa dimanfaatkan sebagai bahan penunjuk suhu pada
+		termometer.</string>
+	<string name="suhu_4_3">2. Keping Bimetal</string>
+	<string name="suhu_4_3b">Keping bimetal adalah pengabungan dua jenis batang logam yang memiliki koefisien muai
+		panjang yang berbeda. Keping ini sangat peka terhadap suhu. Karena koefisien muai dua logam
+		yang digabungkan berbeda, maka ketika dipanaskan keping ini akan melengkung ke arah logam
+		yang koefisien muai panjangnya lebih kecil. Sebaliknya, ketika didinginkan, lengkungannya
+		akan mengarah pada logam yang koefisien muai panjangnya lebih besar.
+		Keping bimetal digunakan pada lampu sein mobil atau motor, termometer bimetal, termostat
+		bimetal (alat pengukur suhu yang berfungsi sebagai sakelar otomatis pada alat-alat rumah
+		tangga, seperti setrika listrik, oven listrik, lemari es, pemanas) dan saklar termal untuk
+		alarm kebakaran.</string>
+	<string name="suhu_4_4">3. Pengelingan Pelat Logam</string>
+	<string name="suhu_4_4b">Pengelingan adalah proses penyambungan dua batang logam dengan paku keling. Mula-mula kedua
+		logam yang akan dikeling sudah dilubangi. Bagian lubangnya dipanaskan hingga agak besar
+		dengan tujuan agar paku keling mudah masuk. Setelah paku masuk, pemanasan dihentikan dan
+		paku ditempa agar setelah suhu dingin lubang logam akan menyusut dan mengikat erat paku
+		keling.</string>
+	<string name="suhu_4_5">4. Pemasangan Bingkai Besi pada Roda</string>
+	<string name="suhu_4_5b">Dalam hal ini, prinsip pemuaian digunakan untuk mempermudah pemasangan bingkai besi pada
+		roda. Ban baja yang berdiameter lebih kecil dari roda besi dipanaskan hingga memuai dan
+		diameternya membesar. Kemudian, ban baja dipasang pada roda dengan tujuan agar setelah suhu
+		dingin kembali, ban baja akan menyusut dan menempel kuat pada roda.</string>
+
 	<string name="suhu_4">Konsep pemuaian zat teryata dapat dimanfaatkan dalam kehidupan
 		sehari-hari, antara lain sebagai berikut : \n \n
 		1. Termometer \n
@@ -130,49 +180,55 @@
 		wujud zat. Pada zat berubah suhu, wujud zatnya akan tetap. Sebaliknya, pada saat perubahan
 		wujud, suhunya akan tetap.
 	</string>
-	<string name="kalor_2_1">1. Kalor dapat mengubah suhu \n
-		Banyaknya kalor untuk mengubah suhu benda dirumuskan :
-	</string>
-	<string name="kalor_2_2">2. Kalor dapat mengubah wujud \n
-		Perubahan wujud zat ada yang memerlukan kalor dan ada yang melepaskan kalor. \n \n
-		Perubahan wujud yang memerlukan kalor : \n \n
-		a. Melebur : perubahan wujud dari padat menjadi cair. \n
-		b. Menguap : perubahan wujud dari cair menjadi gas. \n
-		c. Menyublim : perubahan dari wujud padat menjadi gas. \n \n
-		Perubahan wujud yang melepaskan kalor : \n
-		a. Membeku : perubahan wujud dari cair menjadi padat. \n
-		b. Mengembun : perubahan wujud dari gas menjadi cair. \n
-		c. Mendeposisi : perubahan wujud dari gas menjadi padat.
-	</string>
+
+	<string name="kalor_2_1">1. Kalor dapat mengubah suhu</string>
+	<string name="kalor_2_1b">Banyaknya kalor untuk mengubah suhu benda dirumuskan :</string>
+
+	<string name="kalor_2_2">2. Kalor dapat mengubah wujud</string>
+	<string name="kalor_2_2b">Perubahan wujud zat ada yang memerlukan kalor dan ada yang melepaskan kalor.</string>
+	<string name="kalor_2_2_2">Perubahan wujud yang memerlukan kalor :</string>
+	<string name="kalor_2_2_2_1">a. Melebur</string>
+	<string name="kalor_2_2_2_1b">perubahan wujud dari padat menjadi cair.</string>
+	<string name="kalor_2_2_2_2">b. Menguap</string>
+	<string name="kalor_2_2_2_2b">perubahan wujud dari cair menjadi gas.</string>
+	<string name="kalor_2_2_2_3">c. Menyublim</string>
+	<string name="kalor_2_2_2_3b">perubahan dari wujud padat menjadi gas.</string>
+	<string name="kalor_2_2_3">Perubahan wujud yang melepaskan kalor :</string>
+	<string name="kalor_2_2_3_1">a. Membeku</string>
+	<string name="kalor_2_2_3_1b">perubahan wujud dari cair menjadi padat.</string>
+	<string name="kalor_2_2_3_2">b. Mengembun</string>
+	<string name="kalor_2_2_3_2b">perubahan wujud dari gas menjadi cair.</string>
+	<string name="kalor_2_2_3_3">c. Mendeposisi</string>
+	<string name="kalor_2_2_3_3b">perubahan wujud dari gas menjadi padat.</string>
+
 	<string name="kalor_3">Kapasitas kalor didefinisikan sebagai banyaknya kalor yang diperlukan
 		untuk menaikkan suhu sebesar 1˚C atau 1 K.
 	</string>
-	<string name="kalor_4_1">Konduksi adalah perpindahan kalor melalui zat tanpa disertai
-		perpindahan partikel-partikelnya. Konduktor dapat terjadi pada zat padat. \n \n
-		Contoh : ketika kita memanaskan salah satu ujung batang logam. Jika kita memegang ujung yang
+	<string name="kalor_4_1a">Konduksi adalah perpindahan kalor melalui zat tanpa disertai
+		perpindahan partikel-partikelnya. Konduktor dapat terjadi pada zat padat.
+	</string>
+	<string name="kalor_4_1b">Ketika kita memanaskan salah satu ujung batang logam. Jika kita memegang ujung yang
 		lain dari batang logam itu, maka kita akan merasakan panas juga.
 	</string>
-	<string name="kalor_4_2">Konveksi adalah perpindahan kalor melalui zat perantara tanpa disertai
+	<string name="kalor_4_2a">Konveksi adalah perpindahan kalor melalui zat perantara tanpa disertai
 		perpindahan partikel-partikelnya. Konveksi terjadi karena perbedaan massa jenis zat.
-		Konveksi terjadi pada zat cair dan zat gas. \n \n
-		Contoh : ketika kita mendidihkan air. Air yang dididihkan akan memanas, lalu memuai sehingga
+		Konveksi terjadi pada zat cair dan zat gas.
+	</string>
+	<string name="kalor_4_2b">Ketika kita mendidihkan air. Air yang dididihkan akan memanas, lalu memuai sehingga
 		massa jenisnya berkurang. Akibatnya, air bergerak naik dan tempatnya digantikan oleh air
 		yang bersuhu rendah yang bergerak turun karena massa jenisnya lebih besar.
 	</string>
-	<string name="kalor_4_3">Radiasi adalah perambatan kalor tanpa zat perantara. \n \n
-		Contoh : ketika kita berjalan pada siang hari di bawah terik matahari, kita akan merasakan
+	<string name="kalor_4_3a">Radiasi adalah perambatan kalor tanpa zat perantara.
+	</string>
+	<string name="kalor_4_3b">Ketika kita berjalan pada siang hari di bawah terik matahari, kita akan merasakan
 		panas.
 	</string>
-	<string name="kalor_5">Konsep kalor dapat ditemukan dalam kehidupan sehari-hari, misalnya : \n
-		\n
-		1. Warna permukaan benda menentukan kalor yang diterima \n
-		Warna hitam menyerap kalor lebih baik daripada warna putih. Warna putih mengkilap
-		memantulkan panas. \n \n
-		2. Termos \n
-		Termos digunakan untuk menyimpan air panas agar tahan lama dengan prinsip perpindahan kalor.
-		\n \n
-		3. Termoskop \n
-		Termoskop adalah alat yang digunakan untuk mengetahui adanya pancaran kalor. \n
+	<string name="kalor_5_1">Warna hitam menyerap kalor lebih baik daripada warna putih. Warna putih mengkilap
+		memantulkan panas.
+	</string>
+	<string name="kalor_5_2">Termos digunakan untuk menyimpan air panas agar tahan lama dengan prinsip perpindahan kalor.
+	</string>
+	<string name="kalor_5_3">Termoskop adalah alat yang digunakan untuk mengetahui adanya pancaran kalor.
 	</string>
 
 	<string name="action_settings">Settings</string>

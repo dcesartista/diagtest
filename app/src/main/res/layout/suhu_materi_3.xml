@@ -14,12 +14,13 @@
             android:textStyle="bold"
             android:textSize="24sp"
             android:text="Pemuaian"/>
-        <TextView
+        <WebView
+            android:id="@+id/suhu3_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/suhu_3_1"/>
 
         <TextView
@@ -30,19 +31,27 @@
             android:paddingBottom="4dp"
             android:textStyle="bold"
             android:text="1. Koefisien Muai Panjang"/>
-        <TextView
+        <WebView
+            android:id="@+id/suhu3_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="32dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/suhu_3_2"/>
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="60dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:src="@drawable/suhu3a"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:src="@drawable/suhu3"/>
+	        android:layout_marginBottom="16dp"
+            android:src="@drawable/suhu3b"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -52,19 +61,27 @@
             android:paddingBottom="4dp"
             android:textStyle="bold"
             android:text="2. Koefisien Muai Luas"/>
-        <TextView
+        <WebView
+            android:id="@+id/suhu3_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="32dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/suhu_3_3"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:src="@drawable/suhu4"/>
+	    <ImageView
+		    android:layout_width="match_parent"
+		    android:layout_height="60dp"
+		    android:paddingLeft="32dp"
+		    android:paddingRight="32dp"
+		    android:src="@drawable/suhu4a"/>
+	    <ImageView
+		    android:layout_width="match_parent"
+		    android:layout_height="100dp"
+		    android:paddingLeft="16dp"
+		    android:paddingRight="16dp"
+		    android:layout_marginBottom="16dp"
+		    android:src="@drawable/suhu4b"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -74,21 +91,59 @@
             android:paddingBottom="4dp"
             android:textStyle="bold"
             android:text="3. Koefisien Muai Volume"/>
-        <TextView
+        <WebView
+            android:id="@+id/suhu3_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="32dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:text="@string/suhu_3_4"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:src="@drawable/suhu5"/>
+	    <ImageView
+		    android:layout_width="match_parent"
+		    android:layout_height="60dp"
+		    android:paddingLeft="32dp"
+		    android:paddingRight="32dp"
+		    android:src="@drawable/suhu5a"/>
+	    <ImageView
+		    android:layout_width="match_parent"
+		    android:layout_height="100dp"
+		    android:paddingLeft="16dp"
+		    android:paddingRight="16dp"
+		    android:src="@drawable/suhu5b"/>
 
+		<TextView android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="16dp"
+			android:text="Contoh pemuaian :"/>
 
+	    <TextView android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:paddingBottom="16dp"
+		    android:paddingLeft="24dp"
+		    android:paddingRight="16dp"
+		    android:text="a. Pemuaian Luas"/>
 
+	    <ImageView
+		    android:layout_width="match_parent"
+		    android:layout_height="120dp"
+		    android:paddingLeft="16dp"
+		    android:paddingRight="16dp"
+		    android:src="@drawable/muai1"/>
+
+	    <TextView android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:paddingBottom="16dp"
+		    android:paddingLeft="24dp"
+		    android:paddingRight="16dp"
+		    android:paddingTop="16dp"
+		    android:text="a. Pemuaian Luas"/>
+	    <ImageView
+		    android:layout_width="match_parent"
+		    android:layout_height="150dp"
+		    android:paddingLeft="16dp"
+		    android:paddingRight="16dp"
+		    android:layout_marginBottom="24dp"
+		    android:src="@drawable/muai2"/>
     </LinearLayout>
 </ScrollView>

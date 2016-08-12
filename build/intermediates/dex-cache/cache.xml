@@ -19,7 +19,7 @@
         jar="E:\Work\DiagTest\diagtest\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="292b47097b560fa8197392f9563e0f55acc11abb">
+        sha1="980f1e33278c39138a8a9bf922e1c91b2f884c68">
         <dex dex="E:\Work\DiagTest\diagtest\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_a9d082cd9bdb1a1a6ce1bf26e783e9ed8c777226\classes.dex" />
     </item>
     <item
@@ -54,7 +54,7 @@
         jar="E:\Work\DiagTest\diagtest\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="47d5b016cc04ac9ec9edea8e9358019b4f596ad4">
+        sha1="c0fc4bb88b0651b1599000fe582f46d710d887f7">
         <dex dex="E:\Work\DiagTest\diagtest\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_6b5ee20a6d27f03c42c5b22dfdca6328f48d1797\classes.dex" />
     </item>
     <item
