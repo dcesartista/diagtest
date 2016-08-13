@@ -45,6 +45,7 @@ public class UjianActivity2 extends AppCompatActivity
     private float score;
     private float jumlahBenar;
     View timeout;
+    public static CountDownTimer  cd;
     ProgressDialog progressDialog;
     String theScore;
     String formatKirimJawaban;
@@ -420,7 +421,7 @@ public class UjianActivity2 extends AppCompatActivity
 
         mAdapter = new SoalAdapterNew(this, soalsoal, this);
         mListView.setAdapter(mAdapter);
-        new CountDownTimer(3600000,300000){
+        cd = new CountDownTimer(3600000,300000){
             @Override
             public void onTick(long millisUntilFinished) {
                 Toast.makeText(UjianActivity2.this,"Waktu anda tinggal "+(millisUntilFinished/60000)+" menit lagi",Toast.LENGTH_LONG).show();
@@ -431,7 +432,8 @@ public class UjianActivity2 extends AppCompatActivity
                 mListView.setVisibility(View.GONE);
                 timeout.setVisibility(View.VISIBLE);
             }
-        }.start();
+        };
+        cd.start();
     }
 
     @Override
@@ -462,10 +464,17 @@ public class UjianActivity2 extends AppCompatActivity
     private void submitTest(boolean timeOut){
         jumlahBenar = 0;
         score = 0;
+        jumlahBenarKompetensi1=0;
+        jumlahBenarKompetensi2=0;
+        jumlahBenarKompetensi3=0;
+        jumlahBenarKompetensi4=0;
         formatKirimJawaban = "";
+        String[] ansres = new String[15];
         for (int i = 0; i < jumlahSoal; i++) {
-            formatKirimJawaban = formatKirimJawaban.concat(soalsoal.getIdSoal()[i]+"_"+UjianActivity2.changeAnswerIdtoLetter(SoalAdapterNew.answers[i]).toLowerCase()+
-                                                           "."+UjianActivity2.changeReasonIdtoLetter(SoalAdapterNew.reasons[i])+"#");
+            ansres[Integer.parseInt(soalsoal.getIdSoal()[i].substring(4, 6))-1] = UjianActivity2.changeAnswerIdtoLetter(SoalAdapterNew.answers[i]).toLowerCase()+
+                                                                               "."+UjianActivity2.changeReasonIdtoLetter(SoalAdapterNew.reasons[i]);
+            /*formatKirimJawaban = formatKirimJawaban.concat(soalsoal.getIdSoal()[i]+"_"+UjianActivity2.changeAnswerIdtoLetter(SoalAdapterNew.answers[i]).toLowerCase()+
+                                                           "."+UjianActivity2.changeReasonIdtoLetter(SoalAdapterNew.reasons[i])+"#");*/
             Log.v("jawaban", UjianActivity2.changeAnswerIdtoLetter(SoalAdapterNew.answers[i]));
             Log.v("kunci", ""+UjianActivity2.getAnswerKey()[i]);
             Log.v("alasan",UjianActivity2.changeReasonIdtoLetter(SoalAdapterNew.reasons[i]));
@@ -495,6 +504,10 @@ public class UjianActivity2 extends AppCompatActivity
                 }
                 jumlahBenar+=1;
             }
+        }
+
+        for (int i = 0; i < jumlahSoal; i++) {
+            formatKirimJawaban = formatKirimJawaban.concat(ansres[i] + "_");
         }
 
         Data.pemahamanKompetensi1 = (jumlahBenarKompetensi1/(Data.jumlahKompetensi1*2)) * 100;
@@ -552,6 +565,9 @@ public class UjianActivity2 extends AppCompatActivity
         submitAnswer.sendPostRequest(EndPointAPI.DIAGTEST_SUBMIT,map);
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        cd.cancel();
+        super.onDestroy();
+    }
 }

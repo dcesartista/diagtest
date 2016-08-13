@@ -135,6 +135,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
         reasons = null;
         context.startActivity(intent);
         activity.finish();
+        UjianActivity2.cd.cancel();
     }
 
     @Override
@@ -207,7 +208,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
                 RadioButton alasan = (RadioButton) soalHolder.reasons.getChildAt(i);
                 if (null != mSoal.getGambarRsn()[soalPosition][i]){
                     Log.v("WAAHAHA", "HAHAHA");
-                    alasan.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, mSoal.getGambarRsn()[soalPosition][i], null);
+                    alasan.setCompoundDrawablesRelativeWithIntrinsicBounds(mSoal.getGambarRsn()[soalPosition][i], null, null, null);
                     alasan.setText("");
                 }
                 else {
@@ -286,9 +287,13 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
         jumlahBenarKompetensi3=0;
         jumlahBenarKompetensi4=0;
         formatKirimJawaban = "";
+        String[] ansres = new String[15];
         for (int i = 0; i < jumlahSoal; i++) {
-            formatKirimJawaban = formatKirimJawaban.concat(mSoal.getIdSoal()[i]+"_"+UjianActivity2.changeAnswerIdtoLetter(answers[i]).toLowerCase()+
-                                                           "."+UjianActivity2.changeReasonIdtoLetter(reasons[i])+"#");
+            Log.v("JHKJHK",""+Integer.parseInt(mSoal.getIdSoal()[i].substring(4, 6)));
+            ansres[Integer.parseInt(mSoal.getIdSoal()[i].substring(4, 6))-1] = UjianActivity2.changeAnswerIdtoLetter(answers[i]).toLowerCase()+
+                                                                             "."+UjianActivity2.changeReasonIdtoLetter(reasons[i]);
+            /*formatKirimJawaban = formatKirimJawaban.concat(mSoal.getIdSoal()[i]+"_"+UjianActivity2.changeAnswerIdtoLetter(answers[i]).toLowerCase()+
+                                                           "."+UjianActivity2.changeReasonIdtoLetter(reasons[i])+"#");*/
             Log.v("jawaban", UjianActivity2.changeAnswerIdtoLetter(answers[i]));
             Log.v("kunci", ""+UjianActivity2.getAnswerKey()[i]);
             Log.v("alasan",UjianActivity2.changeReasonIdtoLetter(reasons[i]));
@@ -318,6 +323,10 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
                 }
                 jumlahBenar+=1;
             }
+        }
+
+        for (int i = 0; i < jumlahSoal; i++) {
+            formatKirimJawaban = formatKirimJawaban.concat(ansres[i] + "_");
         }
 
         Data.pemahamanKompetensi1 = (jumlahBenarKompetensi1/(Data.jumlahKompetensi1*2)) * 100;

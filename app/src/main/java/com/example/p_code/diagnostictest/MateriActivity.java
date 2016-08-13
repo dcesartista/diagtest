@@ -68,7 +68,7 @@ public class MateriActivity extends AppCompatActivity
         WebView suhu1 = (WebView) findViewById(R.id.suhu1);
         suhu1.loadData(String.format(htmlText,getString(R.string.suhu_1)), "text/html", "utf-8");
         WebSettings webSettings = suhu1.getSettings();
-        webSettings.setDefaultFontSize(18);
+        webSettings.setDefaultFixedFontSize(18);
 
     }
 
