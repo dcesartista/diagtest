@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -146,7 +148,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
 
     public static class SoalHolder {
         TextView nomorSoal;
-        TextView soal, soal2;
+        WebView soal, soal2;
         ImageView gambar;
         RadioGroup options;
         TextView alasan;
@@ -157,8 +159,8 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
             //ListView lv = (ListView) view.
             //soalPosition = lv.getPositionForView(view);
             gambar = (ImageView) view.findViewById(R.id.ivSoals);
-            soal = (TextView) view.findViewById(R.id.tvSoals);
-            soal2 = (TextView) view.findViewById(R.id.tvSoals2);
+            soal = (WebView) view.findViewById(R.id.tvSoals);
+            soal2 = (WebView) view.findViewById(R.id.tvSoals2);
             options = (RadioGroup) view.findViewById(R.id.rgOptions);
             alasan = (TextView) view.findViewById(R.id.tvAlasan);
             reasons = (RadioGroup) view.findViewById(R.id.rgReasons);
@@ -170,6 +172,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
     @Override
     public View getView(final int soalPosition, View convertView, ViewGroup parent) {
         View view;
+        String htmlText = "<html><body style=\"text-align:justify\"> %s </body></Html>";
 
         if (soalPosition == jumlahSoal){
             view = inflater.inflate(R.layout.submit_button, parent, false);
@@ -204,7 +207,7 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
                 RadioButton alasan = (RadioButton) soalHolder.reasons.getChildAt(i);
                 if (null != mSoal.getGambarRsn()[soalPosition][i]){
                     Log.v("WAAHAHA", "HAHAHA");
-                    alasan.setCompoundDrawablesWithIntrinsicBounds(null, null, mSoal.getGambarRsn()[soalPosition][i], null);
+                    alasan.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, mSoal.getGambarRsn()[soalPosition][i], null);
                     alasan.setText("");
                 }
                 else {
@@ -213,8 +216,15 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
             }
 
             soalHolder.nomorSoal.setText((soalPosition+1)+".");
-            soalHolder.soal.setText(mSoal.getPertanyaan()[soalPosition]);
-            soalHolder.soal2.setText(mSoal.getPertanyaan2()[soalPosition]);
+            //soalHolder.soal.setText(mSoal.getPertanyaan()[soalPosition]);
+            //soalHolder.soal2.setText(mSoal.getPertanyaan2()[soalPosition]);
+            soalHolder.soal.loadData(String.format(htmlText,mSoal.getPertanyaan()[soalPosition]), "text/html; charset=utf-8", "utf-8");
+            WebSettings webSettings = soalHolder.soal.getSettings();
+            webSettings.setDefaultFixedFontSize(18);
+            soalHolder.soal2.loadData(String.format(htmlText,mSoal.getPertanyaan2()[soalPosition]), "text/html; charset=utf-8", "utf-8");
+            WebSettings webSettings2 = soalHolder.soal2.getSettings();
+            webSettings2.setDefaultFixedFontSize(18);
+
             soalHolder.gambar.setImageDrawable(mSoal.getGambar()[soalPosition]);
 
             soalHolder.options.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -271,6 +281,10 @@ public class SoalAdapterNew extends BaseAdapter implements VolleyInterface {
     private void submitTest(boolean timeOut){
         jumlahBenar = 0;
         score = 0;
+        jumlahBenarKompetensi1=0;
+        jumlahBenarKompetensi2=0;
+        jumlahBenarKompetensi3=0;
+        jumlahBenarKompetensi4=0;
         formatKirimJawaban = "";
         for (int i = 0; i < jumlahSoal; i++) {
             formatKirimJawaban = formatKirimJawaban.concat(mSoal.getIdSoal()[i]+"_"+UjianActivity2.changeAnswerIdtoLetter(answers[i]).toLowerCase()+

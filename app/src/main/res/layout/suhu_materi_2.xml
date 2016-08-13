@@ -162,8 +162,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:paddingLeft="32dp"
-            android:paddingRight="16dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="8dp"
             android:paddingBottom="16dp"
             android:src="@drawable/suhu1"/>
 

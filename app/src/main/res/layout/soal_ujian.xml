@@ -22,7 +22,7 @@
             android:id="@+id/linLay2">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 >
                 <TextView
                     android:id="@+id/nomorSoal"
@@ -34,7 +34,7 @@
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp"
                     android:text="20"/>
-                <TextView
+                <WebView
                     android:layout_toRightOf="@id/nomorSoal"
                     android:id="@+id/tvSoals"
                     android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:maxHeight="250dp"
                     />
-                <TextView
+                <WebView
                     android:layout_toRightOf="@id/nomorSoal"
                     android:layout_below="@id/ivSoals"
                     android:id="@+id/tvSoals2"
@@ -73,24 +73,28 @@
                     android:id="@+id/rbOpsiA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""/>
+                    android:text=""
+                    android:textSize="18sp"/>
                 <RadioButton
                     android:layout_marginBottom="16dp"
                     android:id="@+id/rbOpsiB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="B."/>
+                    android:text="B."
+                    android:textSize="18sp"/>
                 <RadioButton
                     android:layout_marginBottom="16dp"
                     android:id="@+id/rbOpsiC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="C."/>
+                    android:text="C."
+                    android:textSize="18sp"/>
                 <RadioButton
                     android:id="@+id/rbOpsiD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="D."/>
+                    android:text="D."
+                    android:textSize="18sp"/>
             </RadioGroup>
 
             <TextView
@@ -101,7 +105,7 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
                 android:text="Alasan"
-                android:textSize="16sp"/>
+                android:textSize="18sp"/>
 
             <RadioGroup
                 android:id="@+id/rgReasons"
@@ -114,24 +118,28 @@
                     android:id="@+id/rbReasonA"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="I."/>
+                    android:text="I."
+                    android:textSize="18sp"/>
                 <RadioButton
                     android:layout_marginBottom="16dp"
                     android:id="@+id/rbReasonB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="II."/>
+                    android:text="II."
+                    android:textSize="18sp"/>
                 <RadioButton
                     android:layout_marginBottom="16dp"
                     android:id="@+id/rbReasonC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="III."/>
+                    android:text="III."
+                    android:textSize="18sp"/>
                 <RadioButton
                     android:id="@+id/rbReasonD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="IV."/>
+                    android:text="IV."
+                    android:textSize="18sp"/>
             </RadioGroup>
 
         </LinearLayout>
